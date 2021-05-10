@@ -1,0 +1,56 @@
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.exe.config
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.exe
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.pdb
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csprojAssemblyReference.cache
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual_Project.Properties.Resources.resources
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.GenerateResource.cache
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.CoreCompileInputs.cache
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.exe
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.pdb
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual_Project.Form1.resources
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\BouncyCastle.Crypto.dll
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Google.Protobuf.dll
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\MySql.Data.dll
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Renci.SshNet.dll
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Ubiety.Dns.Core.dll
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Google.Protobuf.xml
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\MySql.Data.xml
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Renci.SshNet.xml
+U:\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.CopyComplete
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.exe.config
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.exe
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Individual Project.pdb
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Google.Protobuf.dll
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\MySql.Data.dll
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Renci.SshNet.dll
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Google.Protobuf.xml
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\MySql.Data.xml
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\bin\Debug\Renci.SshNet.xml
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csprojAssemblyReference.cache
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual_Project.Form1.resources
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual_Project.Properties.Resources.resources
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.GenerateResource.cache
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.CoreCompileInputs.cache
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.CopyComplete
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.exe
+C:\Users\changk\Documents\My Courses\CSC 340\CSC 340 2020 Spring\Individual Project\Individual Project\obj\Debug\Individual Project.pdb
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Individual Project.exe.config
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Individual Project.exe
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Individual Project.pdb
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Google.Protobuf.dll
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\MySql.Data.dll
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Renci.SshNet.dll
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Google.Protobuf.xml
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\MySql.Data.xml
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\bin\Debug\Renci.SshNet.xml
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual Project.csprojAssemblyReference.cache
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual_Project.Form1.resources
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual_Project.Properties.Resources.resources
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.GenerateResource.cache
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual Project.csproj.CopyComplete
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual Project.exe
+C:\Users\Owner\Desktop\EKU\2020Spring\Ethics340\Projects\examplesFromClass\VizStudioExample\Individual Project\Individual Project\obj\Debug\Individual Project.pdb

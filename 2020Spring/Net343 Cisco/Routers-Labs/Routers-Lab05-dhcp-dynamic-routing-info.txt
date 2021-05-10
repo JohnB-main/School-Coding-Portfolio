@@ -1,0 +1,66 @@
+Routers-Lab04-dynamic-routing-i
+Routers-Lab04-dynamic-routing-info
+Routers-Lab04-dynamic-routing-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
+First copy the Routers-Lab05-dhcp-dynamic-routing-i to Routers-Lab05-dhcp-dynamic-routing-x-MyName
+
++ Verify end-to-end ping connectivity between hosts connected to the different networks. 
+
++ Remove the IP address assigned to c10Corp, c11Corp2,
+and c12Branch; and set these to automatically acquire IPs
+
+
++ Next, we will be setting up assignment of IPs to hosts on the 10.10.90.0, 10.10.93.0, and 10.10.92.0 from a corporate DHCP server running at rCorp. Excluding the first few IPs in each range for static devices.  
+
+On rCorp:
+rCorp#config t
+rCorp(config)#ip dhcp excluded-address 10.10.90.1 10.10.90.9
+rCorp(config)#ip dhcp excluded-address 10.10.93.1 10.10.93.9
+rCorp(config)#ip dhcp excluded-address 10.10.92.1 10.10.92.9
+
+rCorp(config)#ip dhcp pool CORP_LAN
+rCorp(dhcp-config)#network 10.10.90.0 255.255.255.0
+rCorp(dhcp-config)#default-router 10.10.90.1
+rCorp(dhcp-config)#dns-server 4.4.4.4
+rCorp(dhcp-config)#exit
+
+rCorp(config)#ip dhcp pool CORP2_LAN
+rCorp(dhcp-config)#network 10.10.93.0 255.255.255.0
+rCorp(dhcp-config)#default-router 10.10.93.1
+rCorp(dhcp-config)#dns-server 4.4.4.4
+rCorp(dhcp-config)#exit
+
+rCorp(config)#ip dhcp pool CORP_BRANCH
+rCorp(dhcp-config)#network 10.10.92.0 255.255.255.0
+rCorp(dhcp-config)#default-router 10.10.92.1
+rCorp(dhcp-config)#dns-server 4.4.4.4
+rCorp(dhcp-config)#end
+rCorp#show run | begin dhcp
+
+On rBranch:
+rBranch(config)#int fa0/0
+rBranch(config-if)#ip helper-address 10.10.91.1
+rBranch(config-if)#end
+rBranch#show run | begin interface
+
++ View the FastEthernet settings of c10Corp, c11Corp2, and c12Branch. (You may need to switch between "Static" and "DHCP" assignment of IPs)
+
++ Verify end-to-end ping connectivity between hosts connected to the different networks. 
+rCorp#show ip dhcp binding
+rCorp#show ip dhcp pool
+rCorp#show ip dhcp conflict
+
++ Launch a web browser at c12Branch and vew the default web page at 10.10.90.2
+
++ Copy running config to startup config of rCorp and rBranch
+
++ Save the sim adding your name to it, such as Routers-Lab05-dhcp-dynamic-routing-x--MyName
+----------------------------------
+
+
+
+
+

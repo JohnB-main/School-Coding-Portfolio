@@ -1,0 +1,91 @@
+Routers-Lab02-multi-router-setup-i
+Routers-Lab02-multi-router-setup-info
+Routers-Lab02-multi-router-setup-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations.
+
+First copy the Routers-Lab02-multi-router-setup-i to Routers-Lab02-multi-router-setup-x--MyName.
+
++ Add a branch router, with switch, and computer. Change name labels to rBranch, sBranch, c12Branch. Connect FastEthernet cable between c12Branch and port Fa0/12 of sBranch. Connect Fa0/0 of rBranch to Fa0/1 of sBranch.
+Set hostname of router to "rBranch".
+Router>en
+Router#config t
+Router(config)#hostname rBranch
+rBranch(config)#end
+rBranch#copy run start
+
++ Add a serial interface (WIC-2T) to both rCorp and rBranch. Power down routers to do so. Connect the DCE end of the serial cable at S0/0 of rCorp and the DTE end of the the serial cable at S0/0 of rBranch.
+
++ On rCorp set IP address of S0/0 to 10.10.91.1/24, and bring up the interface. 
+Clocking of serial line is provided by rCorp, 1 Mbps, and verify ("show controllers s0/0").
+Router#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+rCorp(config)#int s0/0
+rCorp(config-if)#ip address 10.10.91.1 255.255.255.0
+rCorp(config-if)#no shut
+rCorp(config-if)#desc WAN link to branch
+rCorp(config-if)#clock rate 1000000
+rCorp(config-if)#end
+rCorp#show controllers s0/0
+rCorp#show run | begin interface
+
++ On rBranch set IP address of Fa0/0 port to 10.10.92.1/24 and its S0/0 to 10.10.91.2/24. 
+Bring up the interfaces.
+rBranch(config)#int fa0/0
+rBranch(config-if)#ip address 10.10.92.1 255.255.255.0
+rBranch(config-if)#desc Branch LAN
+rBranch(config-if)#no shut
+rBranch(config-if)#int s0/0
+rBranch(config-if)#ip address 10.10.91.2 255.255.255.0
+rBranch(config-if)#no shut
+
++ Setup all user exec mode passwords (console, aux, and vty lines) to: net
+; and require passwords to log in.
+rBranch(config)#line con 0
+rBranch(config-line)#password net
+rBranch(config-line)#login
+rBranch(config-line)#logging synchronous
+rBranch(config-line)#exit 
+rBranch(config)#line vty 0 15
+rBranch(config-line)#password net
+rBranch(config-line)#login
+rBranch(config-line)#logging synchronous
+rBranch(config-line)#line aux 0
+rBranch(config-line)#password net
+rBranch(config-line)#login
+rBranch(config-line)#logging synchronous
+rBranch(config-line)#exit
+
++ Set privilege exec mode password to: 343
+rBranch(config)#enable secret 343
+rBranch(config)#service password-encryption 
+rBranch(config)#no ip domain lookup
+rBranch(config)#do show run
+rBranch(config)#do show protocols
+rBranch(config)#do show ip route
+
++ Set up suitable message of the day.
+rBranch(config)#banner motd *Authorized access only. All activity over network is logged.*
+Router(config)#end
+
++ Set clock on device/
+rBranch#clock set ?
+(follow the prompts to set the clock, date, month, year)
+
++ Setup IP of c12Branch to 10.10.92.12/24 (DG: 10.10.92.1/24). 
+
++ From c12Branch ping its gateway and back to verify connectivity.
+
++ From c12Branch ping the near end of the serial interface (10.10.91.2) and the far/WAN end of the serial link (10.10.91.1).
+
++ From c10Corp ping the near end of its serial interface (10.10.91.2) and the far/WAN end (10.10.91.1).
+
++ View the routing tables of rCorp and rBranch.
+
++ Copy running config to startup config of rCorp and rBranch.
+
++ Save the sim adding your name to it, such as Routers-Lab02-multi-router-setup-x--MyName
+----------------------------------
+
+

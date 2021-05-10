@@ -1,0 +1,64 @@
+IOS-Lab04-switch-mgt-vlan-i
+IOS-Lab04-switch-mgt-vlan-info
+IOS-Lab04-switch-mgt-vlan-x
+
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
++ Attempt to telnet and ping from switch s1Corp to router rCorp initially
+s1Corp#ping 10.10.90.1
+s1Corp#telnet 10.10.90.1
+
++ Use the "show vlan" command to verify the status of the native vlan and the ports associated with it
+
++ Use the "show interfaces vlan1" for viewing status of the interface (up or down)
+
++ Setup IP address for native vlan to 10.10.90.3/24 and default gateway 10.10.90.1
+s1Corp(config)#int vlan 1
+s1Corp(config-if)#ip address 10.10.90.3 255.255.255.0
+s1Corp(config-if)#description Mgt vlan for s1Corp
+s1Corp(config-if)#no shut
+s1Corp(config-if)#exit
+s1Corp(config)#ip default-gateway 10.10.90.1
+s1Corp(config)#end
+s1Corp#
+
++ Again attempt to telnet or ping from switch s1Corp to router rCorp
+
++ Ping switch s1Corp from computer c1Corp
+
++ Open a command prompt on computer c1Corp 
+(Click c1Corp -> Dekstop -> Command Prompt) and run the command "arp -a"
+
++ Run the "show ip arp" command on the switch s1Corp to 
+view IP to mac address mappings
+
++ Run the "show mac-address-table" command on the switch s1Corp to 
+view dynamic mappings of macs to various ports
+
++ Copy the running configs to startup configs of devices
+s1Corp#copy run start
+
++ Save the sim adding your our name to it, such as IOS-Lab04-switch-mgt-vlan-x--MyName
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch
+Management vlan 1 10.10.90.3/24 added
+

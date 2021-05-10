@@ -1,0 +1,63 @@
+Routers-Lab03-static-routing-i
+Routers-Lab03-static-routing-info
+Routers-Lab03-static-routing-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Routers-Lab03-static-routing-i to Routers-Lab03-static-routing-x-MyName
+
++ From c10Corp ping the near end of its serial interface (10.10.91.2) and
+ the far/WAN end (10.10.91.1).
+
++ From c12Branch ping its gateway and back to verify connectivity.
+
++ From c12Branch ping the near end of the serial interface (10.10.91.2) and the far/WAN end of the serial link (10.10.91.1).
+
++ Next, we will be setting up static routing between the systems. 
+View the routing tables on both rCorp and rBranch.
+
++ On rCorp:
+rCorp(config)#ip route 10.10.92.0 255.255.255.0 10.10.91.2 150
+rCorp(config)#end
+rCorp#show ip route
+
++ On rBranch:
+rBranch(config)#ip route 10.10.90.0 255.255.255.0 10.10.91.1 150
+rBranch(config)#ip route 10.10.93.0 255.255.255.0 s0/0 150
+rBranch(config)#end
+rBranch#show ip route
+
++ From c12Branch ping c10Corp and c11Corp2; and from c10Corp 
+ping c12Branch.
+
++ Launch a web browser at c12Branch and vew the default web page 
+at 10.10.90.2
+
++ Remove the static route set on rCorp for the
+ 10.10.92.0/24 network through 10.10.91.1
+rCorp(config)#no ip route 10.10.92.0 255.255.255.0 10.10.91.2 150
+
++ Next, set the Gateway of Last Resort on rCorp to
+ forward network traffice to 10.10.92.1 and verify
+rCorp#config t
+rCorp(config)#ip route 0.0.0.0 0.0.0.0 10.10.91.2
+rCorp(config)#end
+rCorp#show ip route
+
++ Verify that pings across the network still work between hosts, and that 
+c12Branch can still veiw the web page hosted on webServerCorp.
+
++ Remove all static routing setup between rCorp and rBranch
+
++ (Optional) Decide if you would like set up static routes between the
+ networks using either: next-hop IP  address, or Outgoing-interace, or 
+Gateway of last resort on the two routers, and apply these.
+
++ Copy running configs of rCorp and rBranch to startup configs
+
++ Save the sim adding your name to it, such as Routers-Lab03-static-routing-x--MyName
+
+
+
+
+

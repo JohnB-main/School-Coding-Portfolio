@@ -1,0 +1,74 @@
+IOS-Lab07-http-i
+IOS-Lab07-http-info
+IOS-Lab07-http-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+
++ Setup a Hypertext Transfer Protocol (HTTP) server for hosting web pages, update its name label to
+ tftp_httpCorp, verify IP and subnet mask as 10.10.90.2/24
+
++ Verify that the web server can can access the web page it is hosting
+In the URL field enter the IP address of the HTTP server
+
++ Verify that a web broswer on computer c1Corp can  access the web page hosted on the
+tftp_httpCorp web server. In the URL field enter the IP address of the HTTP server
+
++ Make suitable changes to the "index.html" file on the web server.
+Click on the edit button next to the index.html file and find the phrase -- Welcome to Cisco Packet Tracer.
+ Add "in the NET 343 class" to it and save this file. View the changes both locally and over the network.
+ 
++ Save the modified index.html file and verify that the changes are displayed on the web page both 
+locally (on server itself) and over the network (from c1Corp).
+
++ Save the sim adding your our name to it, such as IOS-IOS-Lab07-http-x--MyName
+----------------------------------
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+Management vlan 1 10.10.90.3/24
+TFTP server 10.10.90.2/24 added to switch at Fa0/2
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
++ Setup a Hypertext Transfer Protocol (HTTP) server for hosting web pages, update its name label to
+ tftp_httpCorp, verify IP and subnet mask as 10.10.90.2/24
+(Click tftpCorp and change name label)
+(Select tftp_httpCorp -> Config tab -> Under Interface FastEthernet0) to verify IPs
+(In Services tab -> Verify HTTP service is on). 
+
++ Verify that the web server can can access the web page it is hosting
+(Click tftp_httpCorp -> Dekstop -> Web Browser). In the URL field enter the IP address of the HTTP server
+
++ Verify that a web broswer on computer c1Corp can  access the web page hosted on the
+tftp_httpCorp web server (Click c1Corp -> Dekstop -> Web Browser). In the URL field enter the IP address of the HTTP server
+
++ Make suitable changes to the "index.html" file on the web server.
+Click on the edit button next to the index.html file and find the phrase -- Welcome to Cisco Packet Tracer.
+Add "in the NET 343 class" to it and save this file. View the changes both locally and over the network.
+ 
++ Save the modified index.html file and verify that the changes are displayed on the web page both 
+locally (on server itself) and over the network (from c1Corp).
+
++ Save the sim adding your our name to it, such as IOS-IOS-Lab07-http-x--MyName
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+HTTP server (10.10.90.2/24) added to s1Corp 
+
+
+

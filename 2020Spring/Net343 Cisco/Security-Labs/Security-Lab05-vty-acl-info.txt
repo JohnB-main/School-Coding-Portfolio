@@ -1,0 +1,45 @@
+Security-Lab05-vty-acl-i
+Security-Lab05-vty-acl-info
+Security-Lab05-vty-acl-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
+First copy the Security-Lab05-vty-acl-i to Security-Lab05-vty-acl-x-MyName
+
++ Note the IP addresses assigned to hosts c10Corp, c11Corp2, and c12Branch by the DHCP server running on rCorp.
+
++ Ping hosts on the different networks to verify full network connectivity. 
+
++ Verify telnet access from c10Corp, c11Corp, and c12Branch to rCorp
+
++ Permit telnet access from only 10.10.90.10 (corp) and from 10.10.92.10 (branch) to rCorp using a standard ACL. Add suitable documentation to the ACL. Apply the ACL to the appropriate vty lines. 
+ 
+rCorp#config t
+rCorp(config)#access-list 99 remark Allow telnet from c10Corp and c12Branch to rCorp 
+rCorp(config)#access-list 99 permit 10.10.90.10 0.0.0.0
+rCorp(config)#access-list 99 permit host 10.10.92.10
+rCorp(config)#access-list 99 deny any
+rCorp(config)#end
+rCorp#show run | begin access
+
+rCorp#config t
+rCorp(config)#line vty 0 ?
+rCorp(config)#line vty 0 15
+rCorp(config-line)#access-class 99 in
+rCorp(config-line)#end
+
++ View the ACLs on rCorp including the lines where these have been applied. 
+rCorp#show access-lists
+rCorp#show line
+
++ Ping hosts on the different networks to verify full network connectivity. 
+
++ Verify telnet access from only c10Corp and c11Corp to rCorp; not from c12Branch (or any other IP) to rCorp
+
++ Copy running config to startup config of rCorp
+
++ Save the sim adding your name to it, such as Security-Lab05-vty-acl-x--MyName
+----------------------------------
+
+

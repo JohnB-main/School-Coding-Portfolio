@@ -1,0 +1,55 @@
+Switches-Lab04-vlans-i
+Switches-Lab04-vlans-info
+Switches-Lab04-vlans-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+First copy the Switches-Lab04-vlans-i to Switches-Lab04-vlans-x
+
++ Add vlan 100 for Production, and assign Fa0/10-14 to it; and vlan 200 for Sales, and 
+assign Fa0/20-24 to it; remaining ports on native vlan 1. On swith s1Corp (and later on 2nd Switch)
+Switch#config t
+Switch(config)#vlan 100
+Switch(config-vlan)#name Production
+Switch(config-vlan)#vlan 200
+Switch(config-vlan)#name Sales
+Switch(config-vlan)#exit
+Switch(config)#int range fa0/10-14
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 100
+Switch(config-if-range)#int range fa0/20-24
+Switch(config-if-range)#switchport mode access
+Switch(config-if-range)#switchport access vlan 200
+Switch(config-if-range)#exit
+
++ Add at least 2 devices on each VLAN with appropriate IPs:
+100 - 10.10.91.10-14/24
+200 - 10.10.92.20-24/24
+Other computer on the 10.10.90.0/24 network
+
++ Verify ping connectivity between computer on same VLAN
+
++ Add a second switch and create VLANs100 and 200 on it. 
+Add at least one computer to it.
+(Follow same procedure as above. Recommend using Port Fa0/12
+on VLAN 100, Port Fa0/22 on VLAN 200, and Port Fa0/17 on the native VLAN 1. Label the computers appropriately)
+
++ Interconnect the switches using the Gigabit ports (Ga0/1)
+
++ Verify that pings from the native vlan can ping computers 
+across multiple switches.
+
++ Configure the Ga0/1 lines to be trunk on both switches. Verify that computers on same VLAN can ping each other across the switches.
+On s1Corp:
+s1Corp(config)#int G0/1
+s1Corp(config-if)#switchport mode trunk
+s1Corp(config)#end
+
+On Switch
+Switch(config)#int G0/1
+Switch(config-if)switchport mode trunk
+Switch(config)#end
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your name to it, such as Switches-Lab04-vlans-x--MyName
+----------------------------------

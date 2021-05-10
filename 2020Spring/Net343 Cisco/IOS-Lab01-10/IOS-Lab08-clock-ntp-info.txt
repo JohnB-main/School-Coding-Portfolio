@@ -1,0 +1,72 @@
+IOS-Lab08-clock-ntp-i
+IOS-Lab08-clock-ntp-info
+IOS-Lab08-clock-ntp-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
++ View current time on the router rCorp
+
++ Manually set the clock on the router rCorp and the switch s1Corp
+
++ Add the NTP service to existing servers, change name label to tftp_http_ntpCorp, verify IP address 10.10.90.2/24, and enable the NTP service
+
++ Use a Network Time Protocol (NTP) server for automatically setting 
+the clock on the router rCorp
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your our name to it, such as IOS-Lab08-clock-ntp-x--MyName
+----------------------------------
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+Management vlan 1 10.10.90.3/24
+TFTP and HTTP servers 10.10.90.2/24 added to switch at Fa0/2
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
++ View current time on the router rCorp
+rCorp#show clock
+
++ Manually set the clock on the router rCorp and the switch s1Corp
+rCorp# clock set ? 
+(follow the prompts such as ... clock set 12:30:00 27 March 2020
+Verify the updated value of the clock
+
++ Add the NTP service to existing servers, change name label to tftp_http_ntpCorp, 
+verify IP address 10.10.90.2/24, and enable the NTP service
+(Click tftp_http_ntpCorp -> Config tab -> Under Interface FastEthernet0) 
+set IP and subnet mask
+(Services tab -> Verify NTP service is on)
+
++ Use a Network Time Protocol (NTP) server for automatically setting 
+the clock on the router rCorp
+rCorp(config)#ntp server 10.10.90.2 
+(wait for a few minutes for the clocks to synchronize)
+
++ Copy running configs to startup configs of devices
+rCorp#copy run start
+
++ Save the sim adding your our name to it, such as 
+IOS-Lab08-clock-ntp-x--MyName
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+NTP server (10.10.90.2/24) added to s1Corp 
+
+
+

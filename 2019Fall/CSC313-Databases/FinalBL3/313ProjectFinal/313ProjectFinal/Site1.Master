@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="_313ProjectFinal.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="style/StyleSheet1.css" rel="stylesheet" />
+    <%-- Link stylsheet --%>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <header>
+            <%-- Title of the Site woth some flair/made-up word; sounds like it would be in the lore of the borderlands universe --%>
+            Borderlands 3 Gunnage
+        </header>
+        <nav>
+            <%-- Navigation, home in the cernter and some "~~~" for looks --%>
+            <h2>Navigation</h2>
+            <a href="search.aspx">Search Guns</a>
+            ~~~~~
+            <a href="default.aspx">Home Page</a>
+            ~~~~~
+            <a href="submit.aspx">Submit a Gun</a>
+        </nav>
+        <br />
+        
+        <div>
+            <%--  Place holder in the middle of tha page --%>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+                
+
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <%-- Footer for the assignment --%>
+        <footer>
+            John Booker
+        <br>
+            <%-- Topic --%>
+            CSC313 Final-- Borderlands 3 Legendary Guns
+        <br>
+            <%-- Due Date --%>
+            12/9/2019
+        
+        </footer>
+    </form>
+
+
+
+
+
+</body>
+</html>

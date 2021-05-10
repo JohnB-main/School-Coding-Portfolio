@@ -1,0 +1,44 @@
+Switches-Lab03-port-security-i
+Switches-Lab03-port-security-info
+Switches-Lab03-port-security-x
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Switches-Lab03-port-security-i to Switches-Lab03-port-security-x
+
++ Add default security to switch ports # 10
+s1Corp(config)# int fa0/10
+s1Corp(config-if)#switchport mode access
+s1Corp(config-if)#switchport port-security
+
++ Limit number of IPs on s1Corp port 10 to 1
+s1Corp(config)# int fa0/10
+s1Corp(config-if)#switchport port-security maximum 1
+s1Corp(config-if)#switchport port-security violation shutdown
+s1Corp(config)#end
+s1Corp# show run
+
++ Automatically learn MAC address of IP connected to s1Corp port 10
+s1Corp(config-if)#switchport port-security mac-address sticky
+s1Corp(config-if)#end
+
+Next, from c1Corp ping c2Corp, so the switch 
+learns the MAC of c1Corp at port 10. Verify this using the "show run" command
+
++ Add a new laptop at s1Corp port 10 (same IP) and check operation
+when number of IPs connected to port is exceeded using "show port-security"
+
++ If needed, recover from the security violtation using the 
+"shut" followed by the "no shut" command.
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your name to it, such as Switches-Lab02-security-x--MyName
+
+----------------------------------
+KEY CONFIG CHANGES
+On the switch:
++ switchport security enabled at port Fa0/10 with default max 1, and violation shutdown
++ automatically learned MAC address
+
+
+

@@ -1,0 +1,75 @@
+IOS-Lab06-tftp-backup-i
+IOS-Lab06-tftp-backup-info
+IOS-Lab06-tftp-backup-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+
++ Add a server system, set its IP addres to 10.10.90.2/24, and enable the TFTP service
+
++ Make a backup of the router rCorp's startup configuration from NVRAM to the TFTP server
+
++ Restore the startup configuration file from the TFTP server to the rCorp's NVRAM
+
++ Track down the name of the IOS file on the router rCorp
+
++ Make a backup of the rCorp's IOS from the flash to the TFTP server.
+
++ Save the sim adding your our name to it, such as IOS-Lab06-tftp-backup-x--MyName
+----------------------------------
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+Management vlan 1 10.10.90.3/24 added
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
++ Add a server system and set its IP addres to 10.10.90.2/24, and enable the TFTP service
+(Click c1Corp -> Config tab -> Under Interface FastEthernet0) set IP and subnet mask
+(Click c1Corp -> Services tab -> Verify TFTP service is on)
+
++ Make a backup of the router rCorp's startup configuration from NVRAM to the TFTP server
+rCorp#copy start tftp
+Address or name of remote host []? 10.10.90.2
+Destination filename [rCorp-confg]?
+(Press the [Enter] key to confirm. Note the name
+of the file copied to the TFTP server)
+
++ Restore the startup configuration file from the TFTP server to the rCorp's NVRAM, and
+"reload" the router to use this config file
+rCorp#copy tftp start
+Address or name of remote host []? 10.10.90.2
+Source filename []? rCorp-confg
+Destination filename [startup-config]? 
+rCorp#reload
+
++ Track down the name of the IOS file on the router rCorp
+rCorp# show version
+(highlight just the name of the file by clicking and dragging mouse across the name ending in bin, then Right-click and select "Copy" from the drop down menu that appears)
+
++ Make a backup of the rCorp's IOS from the flash to the TFTP server.
+rCorp#copy flash tftp
+Source filename []? c2600-i-mz.122-28.bin
+Address or name of remote host []? 10.10.90.2
+Destination filename [c2600-i-mz.122-28.bin]? 
+
++ Save the sim adding your our name to it, such as IOS-Lab06-tftp-backup-x--MyName
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+TFTP server (10.10.90.2/24) added to s1Corp 
+
+

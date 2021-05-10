@@ -1,0 +1,89 @@
+IOS-Lab09-syslog-ntp-i
+IOS-Lab09-syslog-ntp-info
+IOS-Lab09-syslog-ntp-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+
+Sim Activities for eXtending the initial configurations
+
++ Use a Network Time Protocol (NTP) server for setting the clock on a network device, 
+and add a Syslog server for recording events of interest on a network
+For this update the server system name label to serversCorp, verify its IP address is 10.10.90.2/24, 
+and enable the Syslog service
+
++ On router rCorp send logging event to the Syslog server for all levels, synchronize to 
+NTP clock and add time stamps to events
+
++ Enable logging of ping (icmp) traffic to rCorp
+
++ From computer c1Corp ping router rCorp and view the Syslog files. 
+Note event time stamps.
+
++ Turn debugging off on rCorp
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your our name to it, such as 
+IOS-Lab09-syslog-ntp-x--MyName 
+
+----------------------------------
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+Management vlan 1 10.10.90.3/24
+TFTP, HTTP, NTP servers 10.10.l90.2/24 added to switch at Fa0/2
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
++ Use a Network Time Protocol (NTP) server for setting the clock on a network device, 
+and add a Syslog server for recording events of interest on a network
+
++ Update the server system, name label to serversCorp, verify its IP address is 10.10.90.2/24, 
+and enable the Syslog service
+(Click tftp_http_ntpCorp name labe and change)
+(Click serversCorp -> Config tab -> Under Interface FastEthernet0) verify IP and subnet mask
+(Services tab -> Verify Syslog service is on)
+
++ On router rCorp send logging event to the Syslog server for all levels, synchronize to 
+NTP clock and add time stamps to events
+rCorp(config)#logging 10.10.90.2
+rCorp(config)#logging trap debugging
+rCorp(config)#logging on
+rCorp(config)#ntp server 10.10.90.2
+rCorp(config) service timestamps log datetime msec
+
++ Enable logging of ping (icmp) traffic to rCorp
+rCorp#debug ip icmp
+
++ From computer c1Corp ping router rCorp and view the Syslog files. Note event time stamps.
+
++ Turn debugging off on rCorp
+rCorp#no debug ip icmp
+(or may use the "undebug all" command)
+
++ Copy running configs to startup configs of devices
+rCorp#copy run start
+
++ Save the sim adding your our name to it, such as IOS-Lab09-syslog-ntp-x--MyName 
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+Syslog server (10.10.90.2/24) added to s1Corp 
+
+=====================
+

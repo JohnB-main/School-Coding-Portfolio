@@ -1,0 +1,45 @@
+Switches-Lab02-tftp-backup-i
+Switches-Lab02-tftp-backup-info
+Switches-Lab02-tftp-backup-x
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Switches-Lab02-tftp-backup-i to Switches-Lab02-tftp-backup-x
+
++ Add a server system, change label and set its IP address to 10.10.90.2/24, and enable the TFTP service
+(Click tftpServer -> Config tab -> Under Interface FastEthernet0) set IP and subnet mask
+(Click c1Corp -> Services tab -> Verify TFTP service is on)
+
++ Make a backup of the switch s1Corp's startup configuration from NVRAM to the TFTP server
+s1Corp#copy start tftp
+Address or name of remote host []? 10.10.90.2
+Destination filename [s1Corp-confg]?
+(Press the [Enter] key to confirm. Note the name
+of the file copied to the TFTP server)
+
++ Restore the startup configuration file from the TFTP server to the s1Corp's NVRAM, and
+"reload" the router to use this config file
+s1Corp#copy tftp start
+Address or name of remote host []? 10.10.90.2
+Source filename []? s1Corp-confg
+Destination filename [startup-config]? 
+s1Corp#reload
+
++ Track down the name of the IOS file on the switch s1Corp
+s1Corp# show version
+s1Corp# dir flash
+(highlight just the name of the file by clicking and dragging mouse across the name ending in bin, then Right-click and select "Copy" from the drop down menu that appears)
+
++ Make a backup of the s1Corp's IOS from the flash to the TFTP server.
+s1Corp#copy flash tftp
+Source filename []? c2960-lanbase-mz.122-25.FX.bin
+Address or name of remote host []? 10.10.90.2
+Destination filename [c2960-lanbase-mz.122-25.FX.bin]? 
+
++ Save the sim adding your our name to it, such as Switches-Lab03-tftp-backup-x--MyName
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+TFTP server (10.10.90.2/24) added to s1Corp 
+
+

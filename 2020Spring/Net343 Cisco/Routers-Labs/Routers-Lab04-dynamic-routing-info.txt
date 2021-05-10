@@ -1,0 +1,52 @@
+Routers-Lab04-dynamic-routing-i
+Routers-Lab04-dynamic-routing-info
+Routers-Lab04-dynamic-routing-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Routers-Lab04-dynamic-routing-i to Routers-Lab04-dynamic-routing-x-MyName
+
++ Remove any static or default routing that had been set up on rCorp and rBranch
+
++ From c10Corp ping the near end of its serial interface(10.10.91.1) and the far/WAN end (10.10.91.2).
+
++ From c12Branch ping the near end of the serial interface (10.10.91.2) and the far/WAN end (10.10.91.1).
+
++ Next, we will be setting up dynamic routing between the systems using Routing Information Protocol (RIP) version 2. 
+
+On rCorp:
+rCorp#config t
+rCorp(config)#router rip
+rCorp(config-router)#version 2
+rCorp(config-router)#network 10.10.90.0
+rCorp(config-router)#network 10.10.93.0
+rCorp(config-router)#network 10.10.91.0
+rCorp(config-router)#no auto-summary
+rCorp(config-router)#end
+rCorp#show ip route
+
+On rBranch:
+rBranch#config t
+rBranch(config)#router rip
+rBranch(config-router)#version 2
+rBranch(config-router)#network 10.10.92.0
+rBranch(config-router)#network 10.10.91.0
+rBranch(config-router)#no auto-summary
+rBranch(config-router)#end
+rBranch#show ip route
+
++ Allow 30s for RIP updates to propgrate through the network. View the routing tables on both rCorp and rBranch.
+
++ From c12Branch ping c10Corp and c11Corp2; and from c10Corp ping c12Branch
+
++ Launch a web browser at c12Branch and vew the default web page at 10.10.90.2
+
++ Copy running config to startup config of rCorp and rBranch
+
++ Save the sim adding your name to it, such as Routers-Lab04-dynamic-routing-x--MyName
+----------------------------------
+
+
+
+
+

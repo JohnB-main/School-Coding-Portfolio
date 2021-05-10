@@ -1,0 +1,88 @@
+Routers-Lab01-2nets-1router-i
+Routers-Lab01-2nets-1router-info
+Routers-Lab01-2nets-1router-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Routers-Lab01-2nets-1router-i to Routers-Lab01-2nets-1router-x-MyName
+
++ Change name label of computer to c10Corp, server to webServerCorp; switch to s1Corp
+
++  Add a second computer c11Corp2; and a second switch s2Corp2. Change name labels. Connect c11Corp2 to port 11.
+
++ Access the CLI of the router and run the "show ip int brief" command to view interface info. 
+Change its name to rCorp.
+Router>en
+Router#config t
+Router(config)#hostname rCorp
+rCorp(config)#end
+rCorp#copy run start
+
++ Power down router and add a FastEthernet module. Verify port added. 
+
++ Connect FastEthernet cable between c11Corp2 and port 11 on s2Corp. Connect Fa0/1 of s2Corp2 to the new Fa1/0 module of router 
+
++ Run the "show ip int brief" on the router
+
++ Setup all user exec mode passwords (console, aux, and vty lines) to: net
+; and require passwords to log in
+rCorp#config t
+rCorp(config)#line con 0
+rCorp(config-line)#password net
+rCorp(config-line)#login
+rCorp(config-line)#logging synchronous
+rCorp(config-line)#exit
+rCorp(config-line)#line vty 0 ?
+rCorp(config-line)#line vty 0 15
+rCorp(config-line)#password net
+rCorp(config-line)#login
+rCorp(config-line)#logging synchronous
+rCorp(config)#line aux 0
+rCorp(config-line)#password net
+rCorp(config-line)#login
+rCorp(config-line)#logging synchronous
+rCorp(config-line)#exit
+
++ Set privilege exec mode password to: 343
+rCorp(config)#enable secret 343
+rCorp(config)#service password-encryption
+rCorp(config)#no ip domain lookup
+rCorp(config)#do show run
+
++ Set up suitable message of the day
+rCorp(config)#banner motd *Authorized access only. All activity over network is logged.*
+rCorp(config)#end
+
++ Set clock on device
+rCorp#clock set ?
+(follow the prompts to set the clock, date, month, year)
+
++ Setup IP interfaces of rCorp Fa0/0 to 10.10.90.1/24 and of 
+Fa0/1 to 10.10.93.1/24. Add descriptions to router ports.
+rCorp(config)#int fa0/0
+rCorp(config-if)#ip address 10.10.90.1 255.255.255.0
+rCorp(config-if)#descripton Main LAN
+rCorp(config-if)#no shut
+rCorp(config-if)#int fa1/0
+rCorp(config-if)#ip address 10.10.93.1 255.255.255.0
+rCorp(config-if)#descripton Main corporate LAN2
+rCorp(config-if)#no shut 
+rCorp(config-if)#end
+rCorp#show ip int brief
+rCorp#show ip route
+
++ Setup IP of c10Corp to 10.10.90.10/24 (DG10.10.90.1/24), Server to 10.10.90.2/24 (DG: 10.10.90.1/24); c11Corp2 10.10.93.11/24 
+
++ From c10Corp ping its default gateway; and from c11Corp2 ping its default gateway. 
+From c10Corp ping c11Corp.
+
++ Run command "arp -a" on computer c10Corp and c11Corp2 and view results
+
++ Run command "show ip arp" on router rCorp and view results
+
++ Copy running config to startup config of rCorp
+
++ Save the sim adding your name to it, such as Routers-Lab01-2nets-1router-x--MyName
+----------------------------------
+
+

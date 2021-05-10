@@ -1,0 +1,859 @@
+
+# to use tensor flow, you can install it by pip
+    # pip install tensorflow
+#import and setting os environment can help with some errors
+
+# FIXES for numpy errors
+    # pip uninstall numpy
+    # pip install numpy==1.16.4n
+
+
+
+
+##################################################################################################################
+# '''08/24/2020'''
+# '''Nodes, feeds, '''
+#
+# # Print the result
+# # print(tf.__version__)
+#
+#
+# # creation of constants is what allows us to do operations
+# # tensor flow is copmutational
+#
+# node1 = tf.constant(3.0, tf.float32)
+# node2 = tf.constant(4.0) #implicit
+# node3 = tf.add(node1, node2)
+#
+# #to print results you must start a session
+# #create a session
+# sess = tf.compat.v1.Session()
+# #the green is just to let you know what is being printed
+# # sess.run ([node1, node2])
+# # nodes are in []
+# print("sess.run(node1, node2): " , sess.run ([node1, node2]))
+# print("sess.run(node3): ", sess.run([node3]))
+#
+#
+#
+#
+# # placeholder allows empty variables
+# # a '+' can be used in place of tf.add
+# node1 = tf.compat.v1.placeholder(tf.float32)
+# node2 = tf.compat.v1.placeholder(tf.float32)
+# adder_node = node1 + node2
+# sess2 = tf.compat.v1.Session()
+# print("Use with feeds")
+# # FEEDS
+# # feeds are used to do multiple of the same operation
+# print("Feed one number:", sess2.run(adder_node, feed_dict={node1:3, node2:5}))
+# print("Feed many numbers:", sess2.run(adder_node, feed_dict={node1:[3,5], node2:[5,8]}))
+#
+# # everything is basically an array in tensor
+# # Length, shape, and type
+# # Length
+# print()
+# print("Getting Rank(Length), shape, and size")
+# #size goes outter to inner containers
+# T=[[4,5,6],[7,8,9]]
+# print("T is:",T)
+# print("Rank is :", sess.run(tf.rank(T)))
+# #  shape is the structure sizes
+# print("Shape is :", sess.run(tf.shape(T)))
+# print()
+# # how to find type
+#
+# '''LINEAR REGRESSION'''
+# # Regression is 0-100; like a esimating and guessing
+# # use of hypothesis
+# # basically y = m X + B
+# # a smaller distance between hypothesis from data is better
+#     # like deviation
+# # H(x) = Wx + B , or H(x) -y)^2
+# # cost is the smallest distnace
+# # next lectureis to use cost function; sum and divide by number of data
+
+##################################################################################################################
+
+
+
+'''NEXT DAY'''
+'''building a graph with linear regression'''
+'''
+steps:
+    input data defined x and y
+    make w(weight) and b(bias), random at first
+    define hypothesis
+    define cost
+    define the optimization
+    define the train = optimization of cost
+    make a session
+    run the session in a loop
+'''
+# X = [1,2,3]
+# Y = [1,2,3]
+#
+# # trainable variables
+# W = tf.Variable(tf.random_normal([1]), name='weight')
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+# # b is the constant addition, and W is the multipy to X
+# # hypothesis
+# hypo = X * W + b
+#
+#
+# # cost equation, gets graph but still need the minimum
+# Cost = tf.reduce_mean(tf.square(hypo - Y))
+#
+# # minimizer
+# optimize = tf.train.GradientDescentOptimizer(learning_rate=0.01)
+# train = optimize.minimize(Cost)
+#
+# # make session
+# sess = tf.Session()
+#
+# # initilize global variables
+# sess.run(tf.global_variables_initializer())
+#
+# #  fit to the line
+# for step in range(2001):
+#     sess.run(train)
+#     if step % 200 == 0:
+#         print(step, sess.run(Cost), sess.run(W), sess.run(b))
+#
+# # testing other data
+# #X and Y will just need to become place holders to be able to run the below commans
+# print(sess.run(hypo, feed_dict={X:[5]}))
+
+'''
+finding min value of cost
+    Gradient Descent works by moving slightly each time until a minimum is found
+    Moves along the differential at the learning rate
+
+Assignment below for showing the minimalization graph
+'''
+# # install matplotlib.pylot
+# #  on slide send her the result by email
+# # send the graph?
+#
+# ''' Below shows the graph of minimalization'''
+#
+# X = [ 1, 2, 3 ]
+# Y = [ 1, 2, 3 ]
+# W = tf.placeholder ( tf.float32 )
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+#
+# # our hypothesis for linear model X*W
+# hypothesis = X * W + b
+# # cost function
+# cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# # Launch the graph in a session
+# sess = tf.Session()
+# # Initializes global variables in the graph
+# sess.run(tf.global_variables_initializer())
+# # Variables for plotting cost function
+# W_val = [ ]
+# cost_val = [ ]
+# for i in range(-30, 50) :
+#     feed_W = i * 0.1
+#     curr_cost, curr_W = sess.run ( [ cost, W ], feed_dict = { W: feed_W})
+#     W_val.append ( curr_W )
+#     cost_val.append ( curr_cost )
+# # Show the cost function
+# plt.plot ( W_val, cost_val )
+# plt.show ( )
+#
+
+
+
+'''08/31/2020'''
+#
+# # below is just for manual showing of gradient descent
+# xData = [1,2,3]
+# yData = [1,2,3]
+#
+# W= tf.Variable(tf.random_normal([1]), name='Weight')
+# X = tf.placeholder(tf.float32)
+# Y = tf.placeholder(tf.float32)
+#
+# hypo = X * W
+#
+# cost = tf.reduce_mean(tf.square(hypo - Y))
+#
+# # minimize function
+# learnRate = 0.1
+# gradient = tf.reduce_mean((W*X - Y) *X)
+# descent = W - learnRate * gradient
+# update = W.assign(descent)
+#
+# # launch graph in session
+# sess = tf.Session()
+# # init vari
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(21):
+#     sess.run(update, feed_dict={X: xData, Y: yData})
+#     print(step, sess.run(cost, feed_dict= {X:xData, Y:yData}), sess.run((W)))
+
+'''
+replaced by optimizer = tf.train.GradientDescentOptimizer(learnRate=0.1)
+this way is faster
+'''
+# # below is just for manual showing of gradient descent; same as above
+# X = [1,2,3]
+# Y = [1,2,3]
+#
+# # must be a float
+# W= tf.Variable(5.)
+#
+#
+# hypo = X * W
+#
+# cost = tf.reduce_mean(tf.square(hypo - Y))
+#
+# # minimize function
+# optim = tf.train.GradientDescentOptimizer(learning_rate=0.1)
+# train = optim.minimize(cost)
+#
+# # launch graph in session
+# sess = tf.Session()
+# # init vari
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(21):
+#     print(step, sess.run(W))
+#     sess.run(train)
+
+'''Apply multiple gradients'''
+#
+# X = [1,2,3]
+# Y = [1,2,3]
+#
+# # must be a float
+# W= tf.Variable(5.)
+# hypo = X * W
+# cost = tf.reduce_mean(tf.square(hypo - Y))
+#
+#
+# # manual gradient
+# gradient = tf.reduce_mean((W*X-Y) *X)*2
+# # minimize function
+# optim = tf.train.GradientDescentOptimizer(learning_rate=0.1)
+#
+# #get gradients
+# gvs = optim.compute_gradients(cost, [W])
+# apply_gradients = optim.apply_gradients(gvs)
+#
+# # launch graph in session
+# sess = tf.Session()
+# # init vari
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(21):
+#     print(step, sess.run([gradient, W, gvs]))
+#     sess.run(apply_gradients)
+
+
+
+
+'''09-02-2020'''
+'''multivariable for linear regression and Python'''
+''' 
+hypo is how to predict
+cost is how hypo data and actual data differ
+gradient descent is an algorithm to optimize cost value
+hypothesis changes from multi variables by summing the Xs for W
+can use a matrix for calculation; row * column
+x11 x12 x13             w1
+x21 x22 x23     *       w2
+x31 x32 x33             w3
+x41 x42 x43
+
+4,3                     3,1
+
+variables, instances    variables, output
+
+x11*w1 + x12*w2 + x13*w3
+
+features are columns and instance are rows
+
+None is used as a null value
+'''
+
+# x1_data = [73, 93, 89, 96, 73]
+# x2_data = [80, 88, 91, 98, 66]
+# x3_data = [75, 93, 90, 100, 70]
+# y_data = [152, 185, 180, 196, 142]
+#
+# # placeholders for a tensor that will be always fed
+# x1 = tf.placeholder(tf.float32)
+# x2 = tf.placeholder(tf.float32)
+# x3 = tf.placeholder(tf.float32)
+# y = tf.placeholder(tf.float32)
+#
+# w1 = tf.Variable(tf.random_normal([1]), name='Weight1')
+# w2 = tf.Variable(tf.random_normal([1]), name='Weight2')
+# w3 = tf.Variable(tf.random_normal([1]), name='Weight3')
+# b = tf.Variable(tf.random_normal([1]), name='Bias')
+# hypo = x1*w1 + x2*w2 + x3*w3 + b
+#
+# cost = tf.reduce_mean(tf.square(hypo - y))
+#
+# # minimize function
+# optim = tf.train.GradientDescentOptimizer(learning_rate=1e-5)
+# train = optim.minimize(cost)
+#
+# # launch graph in session
+# sess = tf.Session()
+# # init vari
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(2001):
+#     cost_val, hy_val,_ = sess.run([cost, hypo, train],
+#                                 feed_dict={x1:x1_data, x2:x2_data, x3:x3_data, y:y_data})
+#     if step % 10 ==0:
+#         print(step, "cost:", cost_val, "prediction:", hy_val)
+
+
+'''another example, still gotta finish it'''
+# x_data = [[73, 80, 75],[93, 88, 93],[89, 91, 90],[96, 98, 100],[73, 66, 70]]
+# y_data = [[152], [185], [180], [196], [142]]
+# # placeholders for a tensor that will be always fed
+# X = tf.placeholder(tf.float32, shape=[None, 3])
+# Y = tf.placeholder(tf.float32, shape=[None, 1])
+# W = tf.Variable(tf.random_normal([3,1]), name = 'weight1')
+# b = tf.Variable(tf.random_normal([1]), name = 'bias')
+# # Hypothesis
+# hypothesis = tf.matmul(X, W) + b
+# # Simplified cost/Loss function
+# cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# # Minimize. Need a very small Learning rate for this data set
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate = 1e-5)
+# train = optimizer.minimize(cost)
+# # Launch the graph in a session
+# sess = tf.Session()
+# # Initializes global variables in the graph
+# sess.run(tf.global_variables_initializer())
+# for step in range(2001):
+#     cost_val, hy_val, _ = sess.run([cost, hypothesis, train], feed_dict = { X: x_data, Y:y_data})
+#     if step % 10 == 0:
+#         print(step, "cost:", cost_val, "prediction", hy_val)
+
+'''
+method for multiply matrix
+(A,B) X (C, D) = (E,F)
+A and D are the same
+D and F are the same
+A and E are the same
+'''
+
+
+
+'''09/09/2020'''
+'Loading Data From a File'
+
+# 
+# # slicing is helpful
+# ''' [index (included) : index (not included)]
+#     # index start at 0
+#     # blank means first or last
+#     # -1 means end
+# '''
+# 
+# # for reproducibility
+# tf.set_random_seed(777)
+# data_path=r'C:\Users\Owner\Desktop\EKU\2020Fall\CSC546AI\fileEx.csv'
+# xy = np.loadtxt(data_path, delimiter=',', dtype=np.float32)
+# x_data = xy[:, 0:-1]
+# y_data = xy[:, [-1]]
+# 
+# # make sure the shape and data are ok
+# print(x_data.shape, x_data, len(x_data))
+# print(y_data.shape, y_data)
+# 
+# 
+# # placeholders for a tensor that will be always fed.
+# X = tf.placeholder(tf.float32, shape=[None, 3])
+# Y = tf.placeholder(tf.float32, shape=[None,1])
+# W = tf.Variable(tf.random_normal([3,1]), name='weight')
+# b = tf.Variable(tf.random_normal([1]), name = 'bias')
+# 
+# # hypothesis
+# hypothesis = tf.matmul(X,W) + b
+# 
+# # Simplified cost/Loss function
+# cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# 
+# # minimize
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate = 1e-5)
+# train = optimizer.minimize(cost)
+# 
+# 
+# # Launch the graph in a session
+# sess = tf.Session()
+# # Initializes global variables in the graph.
+# sess.run(tf.global_variables_initializer())
+# # set up feed_dict variables inside the loop.
+# for step in range(2001) :
+#     cost_val, hy_val, _ = sess.run([cost, hypothesis, train], feed_dict = {X:x_data, Y: y_data})
+#     if step % 10 == 0 :
+#         print(step, "cost:", cost_val, "prediction", hy_val)
+# 
+# 
+# #ask my score
+# print("your score will be", sess.run(hypothesis, feed_dict={X:[[100, 70, 101]]}))
+# print("other scores will be", sess.run(hypothesis, feed_dict = {X:[[60, 70, 110], [90, 100, 80]]}))
+
+
+
+
+'''Queue Runners using tensorflow
+make file names list
+define batch size
+
+coordinator from train
+    coord = tf.train.Coordinator()
+make threads
+    tf.train.start_queue)tunners(sess=sess, cord=cord
+'''
+# filename_queue = tf.train.string_input_producer([r'C:\Users\Owner\Desktop\EKU\2020Fall\CSC546AIfileEx.csv'], shuffle=False, name='filename_queue')
+#
+# reader = tf.TextLineReader()
+# key,value =reader.read(filename_queue)
+#
+# record_defaults = [[0.],[0.],[0.],[0.]]
+# xy = tf.decode_csv(value, record_defaults=record_defaults)
+#
+# train_x_batch, train_y_batch = tf.train.batch([xy[0:-1], xy[-1:]], batch_size=10)
+#
+# X = tf.placeholder(tf.float32, shape=[None, 3])
+# Y = tf.placeholder(tf.float32, shape=[None, 1])
+#
+# W = tf.Variable(tf.random_normal([3,1]), name = 'weight1')
+# b = tf.Variable(tf.random_normal([1]), name = 'bias')
+# # Hypothesis
+# hypothesis = tf.matmul(X, W) + b
+# # Simplified cost/Loss function
+# cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# # Minimize. Need a very small Learning rate for this data set
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate = 1e-5)
+# train = optimizer.minimize(cost)
+# # Launch the graph in a session
+# sess = tf.Session()
+# # Initializes global variables in the graph
+# sess.run(tf.global_variables_initializer())
+#
+# coord = tf.train.Coordinator()
+# threads = tf.train.start_queue_runners(sess=sess, coord=coord)
+#
+# for step in range(2001):
+#         x_batch, y_batch = sess.run([train_x_batch, train_y_batch])
+#         cost_val, hy_val, _ = sess.run([cost,hypothesis,train], feed_dict={X:x_batch, Y:y_batch})
+#         if step%10 == 0:
+#             print(step, "cost:",cost_val, "hypothesis:",hy_val)
+#
+# coord.request_stop()
+# coord.join(threads)
+
+
+'''09/14/2020'''
+'Logistic Classification'
+
+'little quiz'
+# MON = np.array([[1,2,3,4,11],[5,6,7,8,15],[9,10,11,12,18]])
+# print(MON[:,3])
+# print(MON[-1,2:4])
+# print(MON[-1,...]) # prints out last set
+
+# binary classification
+'''
+HYPOTHESIS
+sigmoid function 
+g(z) is new hypo to classify 0 or 1
+H(x) = 1 / (1+ e^-Wx)
+
+COST FUNCTION 
+c(H(x),y)
+not smooth, so equation must change 
+split for y=1 and y=0; -log(z), -log(1-z)
+-y * log(H(x)) - (1 - y) * log(1-H(x))
+
+'''
+
+# x_data = [[1,2],[2,3],[3,1],[4,3],[5,3],[6,2]]
+# y_data = [[0],[0],[0],[1],[1],[1]]
+#
+# # placeholders for a tensor that will be always fed
+# X = tf.placeholder(tf.float32, shape=[None,2])
+# Y = tf.placeholder(tf.float32, shape=[None,1])
+# W = tf.Variable(tf.random_normal([2,1]), name='weight')
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+#
+# # hypothesis using sigmoid : tf.div(1.,1. + tf.exp(tf.matmul(X,W)+b))
+# hypothesis = tf.sigmoid(tf.matmul(X,W)+b)
+#
+# # cost/Loss function
+# cost = -tf.reduce_mean(Y * tf.log(hypothesis)+(1-Y) * tf.log(1-hypothesis))
+# train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
+#
+# # Accuracy computation # True if hypothesis>0.5 else False
+# predicted = tf.cast(hypothesis>0.5, dtype=tf.float32)
+# accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
+#
+# # launch graph
+# with tf.Session() as sess:
+#     #initialize TensorFlow variables
+#     sess.run(tf.global_variables_initializer())
+#     for step in range(10001):
+#         cost_val, _ = sess.run([cost, train], feed_dict={X:x_data, Y:y_data})
+#         if step % 200 == 0:
+#             print(step, cost_val)
+# #Acuuracy report
+#     h,c,a = sess.run([hypothesis, predicted, accuracy], feed_dict={X:x_data, Y:y_data})
+#     print("\nHypothesis: \n", h, "\nCorrect(Y):\n ", c, "\nAccuracy: ", a)
+
+
+'classification with input data'
+# data_path = r'C:\Users\Owner\Desktop\EKU\2020Fall\CSC546AI\data02diabetes.txt'
+# xy = np.loadtxt(data_path, delimiter=',', dtype=np.float32)
+# x_data = xy[:, 0:-1]
+# y_data = xy[:, [-1]]
+# print(x_data.shape, y_data.shape)
+# # placeholders for a tensor that will be always fed
+# X = tf.placeholder(tf.float32, shape=[None,8])
+# Y = tf.placeholder(tf.float32, shape=[None,1])
+# W = tf.Variable(tf.random_normal([8, 1], name='weight'))
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+# # hypothesis using sigmoid : tf.div(1.,1. + tf.exp(tf.matmul(X,W)+b))
+# hypothesis = tf.sigmoid(tf.matmul(X,W)+b)
+# # cost/Loss function
+# cost = -tf.reduce_mean(Y * tf.log(hypothesis)+(1-Y) * tf.log(1-hypothesis))
+# train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
+# # Accuracy computation # True if hypothesis>0.5 else False
+# predicted = tf.cast(hypothesis>0.5, dtype=tf.float32)
+# accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, Y), dtype=tf.float32))
+# # launch graph
+# with tf.Session() as sess:
+#     #initialize Tensorflow variables
+#     sess.run(tf.global_variables_initializer())
+#     for step in range(10001):
+#         cost_val, _ = sess.run([cost, train], feed_dict={X:x_data, Y:y_data})
+#         sess.run(train, feed_dict={X:x_data, Y:y_data})
+#         if step % 200 == 0:
+#             print(step, cost_val)
+#     #Acuuracy report
+#     h,c,a = sess.run([hypothesis, predicted, accuracy], feed_dict={X:x_data, Y:y_data})
+#     print("\nHypothesis: ", h, "\nCorrect(Y): ", c, "\nAccuracy: ", a)
+#
+# # kaggle is a good spot for datasets
+
+
+'''09/16/2020'''
+'''
+softmax classification; multinomial classification
+
+
+split to classifications, then do sigmoid
+
+Softmax - sigmoid function and fomrula
+sigmoid = g(z)
+sum of classification is 1
+
+Hypothesis
+    one-hot encoding = testing for only one?
+    hypo = softmax(logit)
+    tf.nn.softmax(tf.matmul(X, Y) + b)
+
+Cost
+    uses cross-entropy
+    Y is the real data
+    Y with a line over it = predicted data
+    log makes graph smooth
+
+'''
+
+#
+# x_data = [[1,2,1,1], [2,1,3,2], [3,1,3,4], [4,1,5,5], [1,7,5,5], [1,2,5,6], [1,6,6,6], [1,7,7,7]]
+# y_data = [[0,0,1],[0,0,1],[0,0,1],[0,1,0],[0,1,0],[0,1,0],[1,0,0],[1,0,0]] # one hot encoding
+#
+#
+# X = tf.placeholder("float", [None,4])
+# Y = tf.placeholder("float", [None,3])
+# nb_classes = 3
+#
+# W = tf.Variable(tf.random_normal(([4, nb_classes]), name='weight'))
+# b = tf.Variable(tf.random_normal([nb_classes]), name='bias')
+#
+# # hypothesis using sigmoid : tf.div(1.,1. + tf.exp(tf.matmul(X,W)+b))
+# hypothesis = tf.nn.softmax(tf.matmul(X, W) + b)
+#
+# # cost/Loss function
+# cost = tf.reduce_mean(-tf.reduce_sum(Y*tf.log(hypothesis), axis=1))
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
+#
+# with tf.Session() as sess:
+#     sess.run(tf.global_variables_initializer())
+#
+#     for step in range(2001):
+#         sess.run(optimizer, feed_dict={X:x_data, Y:y_data})
+#         if step % 200 == 0:
+#             print(step, sess.run([cost,W,b], feed_dict={X:x_data, Y:y_data}))
+#
+#     '''ERROR HERE'''
+#     # some testing for one hot encoding
+#     print("------")
+#     a = sess.run(hypothesis, feed_dict={X:[1,11,7,9]})
+#     print(a, sess.run(tf.arg_max(a,1)))
+#
+#     # some testing for one hot encoding
+#     print("------")
+#     b = sess.run(hypothesis, feed_dict={X:[1,3,4,3]})
+#     print(b, sess.run(tf.arg_max(b,1)))
+#
+#     # some testing for one hot encoding
+#     print("------")
+#     c = sess.run(hypothesis, feed_dict={X:[1,1,0,1]})
+#     print(c, sess.run(tf.arg_max(c,1)))
+#
+#     # some testing for one hot encoding
+#     print("------")
+#     all = sess.run(hypothesis, feed_dict={X:[[1,11,2,9], [1,3,4,3], [1,1,0,1]]})
+#     print(all, sess.run(tf.arg_max(all,1)))
+
+
+"""09/21/2020"""
+'''
+FANCY SOFTMAX CLASSIFIER, CROSS ENTROPY SHAPE
+3 classifiers
+    linear,
+    Logic with sigmoid,
+    softmax classification
+'''
+
+'''NEEEEEEEEEED TO FIX FIRST ONE !!!!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'''
+# data_path = r'C:\Users\Owner\Desktop\EKU\2020Fall\CSC546AI\data03animal.txt'
+# xy = np.loadtxt(data_path, delimiter=',', dtype=np.float32)
+# x_data = xy[:,0:-1]
+# y_data = xy[:,[-1]]
+#
+# nb_classes = 7
+#
+# X = tf.placeholder(tf.int32, [None, 16])
+# Y = tf.placeholder(tf.int32, [None, 1])
+#
+#
+# Y_one_hot = tf.one_hot(Y, nb_classes)
+# Y_one_hot = tf.reshape(Y_one_hot, [-1, nb_classes])
+#
+# W = tf.Variable(tf.random_normal([16, nb_classes]), name='weight')
+# b = tf.Variable(tf.random_normal([nb_classes]), name='bias')
+#
+# logits = tf.matmul(X, W) + b
+# hypothesis = tf.nn.softmax(logits)
+#
+# # cross entropy cost/loss
+# cost_i = tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits, labels=tf.stop_gradient([Y_one_hot]))
+# cost = tf.reduce_mean(cost_i)
+# optimizer = tf.train.ProximalGradientDescentOptimizer(learning_rate=0.1).minimize(cost)
+#
+#
+#
+# prediction = tf.argmax(hypothesis, 1)
+# correct_prediction = tf.equal(prediction, tf.argmax(Y_one_hot, 1))
+# accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
+#
+#
+# with tf.Session() as sess:
+#     #initialize TensorFlow variables
+#     sess.run(tf.global_variables_initializer())
+#     for step in range(2000):
+#         sess.run(optimizer, feed_dict={X:x_data, Y:y_data})
+#         if step % 100 == 0:
+#             loss, acc  = sess.run([cost, accuracy], feed_dict= {X:x_data, Y:y_data})
+#             print("Step:{:5}\tLoss:{:.3f}\tAcc:{:.2%}".format(step, loss, acc))
+#     pred = sess.run(prediction, feed_dict={X:x_data})
+#     for p,y in zip(pred, y_data.flatten()):
+#         print("[{}] Prediction: {} True Y: {}".format(p==int(y),p,int(y)))
+
+
+'''testing data'''
+# x_data = [[1, 2, 1], [1, 3, 2], [1, 3, 4], [1, 5, 5],[1, 7, 5], [1, 2, 5], [1, 6, 6], [1, 7, 7]]
+# y_data = [[0, 0, 1], [0, 0, 1], [0, 0, 1], [0, 1, 0], [0, 1, 0], [0, 1, 0], [1, 0, 0], [1, 0, 0]]
+# # Evaluation our model using this test dataset
+# x_test = [[2, 1, 1], [3, 1, 2], [3, 3, 4]]
+# y_test = [[0, 0, 1], [0, 0, 1], [0, 0, 1]]
+#
+# X = tf.placeholder("float", [None, 3])
+# Y = tf.placeholder("float", [None, 3])
+# W = tf.Variable(tf.random_normal([3, 3]))
+# b = tf.Variable(tf.random_normal([3]))
+# hypothesis = tf.nn.softmax(tf.matmul(X, W) + b)
+# cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(hypothesis), axis=1))
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
+# # Correct prediction Test model
+# prediction = tf.arg_max(hypothesis, 1)
+# is_correct = tf.equal(prediction, tf.arg_max(Y, 1))
+# accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+# # Launch graph
+# with tf.Session() as sess:
+#     # Initialize TensorFlow variables
+#     sess.run(tf.global_variables_initializer())
+#     for step in range(201):
+#         cost_val, W_val, _ = sess.run(
+#         [cost, W, optimizer], feed_dict={X: x_data, Y: y_data})
+#         print(step, cost_val, W_val)
+# # predict
+# print("Prediction:", sess.run(prediction, feed_dict={X: x_test}))
+# # Calculate the accuracy
+# print("Accuracy: ", sess.run(accuracy, feed_dict={X: x_test, Y: y_test}))
+
+
+
+'''09/28/2020'''
+'''Learning Rate
+
+ERROR IN FIRST
+'''
+# xy = np.array([[828.659973, 833.450012, 908100, 828.349976, 831.659973],
+#                              [823.02002, 828.070007, 1828100, 821.655029, 828.070007],
+#                              [819.929993, 824.400024, 1438100, 818.97998, 824.159973],
+#                              [816, 820.958984, 1008100, 815.48999, 819.23999],
+#                              [819.359985, 823, 1188100, 818.469971, 818.97998],
+#                              [819, 823, 1198100, 816, 820.450012],
+#                              [811.700012, 815.25, 1098100, 809.780029, 813.669983],
+#                              [809.51001, 816.659973, 1398100, 804.539978, 809.559998]])
+#
+# x_data = xy[:,0:-1]
+# y_data = xy[:,[-1]]
+#
+# X = tf.placeholder(tf.float32, shape=[None,4])
+# Y = tf.placeholder(tf.float32, shape=[None,1])
+# W = tf.Variable(tf.random_normal([4,1]), name='weight')
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+#
+# hypothesis = tf.matmul(W,X) +b
+# cost = tf.reduce_mean(tf.square(hypothesis-Y))
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-5)
+# train = optimizer.minimize(cost)
+#
+# sess = tf.Session()
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(101):
+#     cost_val, hy_val, _ = sess.run(
+#         [cost, hypothesis, train], feed_dict={X:x_data, Y:y_data})
+#     print(step, "Cost", cost_val, "/nPrediction:/n", hy_val)
+#
+
+'''
+Normalization for input data
+import scalare STILL NEED TO DO THIS PART
+'''
+# xy = np.array([[828.659973, 833.450012, 908100, 828.349976, 831.659973],
+#                              [823.02002, 828.070007, 1828100, 821.655029, 828.070007],
+#                              [819.929993, 824.400024, 1438100, 818.97998, 824.159973],
+#                              [816, 820.958984, 1008100, 815.48999, 819.23999],
+#                              [819.359985, 823, 1188100, 818.469971, 818.97998],
+#                              [819, 823, 1198100, 816, 820.450012],
+#                              [811.700012, 815.25, 1098100, 809.780029, 813.669983],
+#                              [809.51001, 816.659973, 1398100, 804.539978, 809.559998]])
+#
+# x_data = xy[:, 0:-1]
+# y_data = xy[:, [-1]]
+# # placeholders for a tensor that will be always fed.
+# X = tf.placeholder(tf.float32, shape=[None, 4])
+# Y = tf.placeholder(tf.float32, shape=[None, 1])
+# W = tf.Variable(tf.random_normal([4, 1]), name='weight')
+# b = tf.Variable(tf.random_normal([1]), name='bias')
+#
+# hypothesis = tf.matmul(X, W) + b
+# cost = tf.reduce_mean(tf.square(hypothesis - Y))
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-5)
+# train = optimizer.minimize(cost)
+#
+# # Launch the graph in a session.
+# sess = tf.Session()
+# # Initializes global variables in the graph.
+# sess.run(tf.global_variables_initializer())
+#
+# for step in range(101):
+#     cost_val, hy_val, _ = sess.run([cost, hypothesis, train], feed_dict={X: x_data, Y: y_data})
+#     print(step, "Cost: ", cost_val, "\nPrediction:\n", hy_val)
+#
+# def min_max_scaler(data):
+#     numerator = data - np.min ( data, 0 )
+#     denominator = np.max ( data, 0 ) - np.min ( data, 0 )
+#     #noise term prevents the zero division
+#     return numerator / (denominator + 1e-7 )
+#
+# xy = min_max_scaler(xy)
+# print(xy)
+
+
+
+'''
+MNIST DATA
+
+epoch is one pass foreward and backward on training exmaples
+Batch is number of training examples in one pass foreward and back
+
+iterations is number of pass using batch size.
+ONE PASS = FOREWARD AND BACK
+'''
+
+# '''
+# EXAM IS THIS WEDNESDAY. SHE WILL GIVE A STUDY GUIDE.
+# LIMITED TIME
+# EXAM BY EMAIL
+# JUST SEND ANSWERS
+# NO IN ZOOM
+#
+# '''
+
+# from tensorflow.examples.tutorials.mnist import input_data
+# # Check out https://www.tensorflow.org/get_started/mnist/beginners for
+# # more information about the mnist dataset
+# mnist = input_data.read_data_sets("MNIST_data/", one_hot=True)
+# nb_classes = 10
+# # MNIST data image of shape 28 * 28 = 784
+# X = tf.placeholder(tf.float32, [None, 784])
+# # 0 - 9 digits recognition = 10 classes
+# Y = tf.placeholder(tf.float32, [None, nb_classes])
+# W = tf.Variable(tf.random_normal([784, nb_classes]))
+# b = tf.Variable(tf.random_normal([nb_classes]))
+#
+# # Hypothesis (using softmax)
+# hypothesis = tf.nn.softmax(tf.matmul(X, W) + b)
+# cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(hypothesis), axis=1))
+# optimizer = tf.train.GradientDescentOptimizer(learning_rate=0.1).minimize(cost)
+# # Test model
+# is_correct = tf.equal(tf.arg_max(hypothesis, 1), tf.arg_max(Y, 1))
+# # Calculate accuracy
+# accuracy = tf.reduce_mean(tf.cast(is_correct, tf.float32))
+#
+#
+# num_epochs = 15
+# batch_size = 100
+# num_iterations = int(mnist.train.num_examples/batch_size)
+# with tf.Session() as sess:
+#     sess.run(tf.global_variables_initializer())
+#     # Training cycle
+#     for epoch in range(num_epochs):
+#         avg_cost = 0
+#         for i in range(num_iterations):
+#             batch_xs, batch_ys = mnist.train.next_batch(batch_size)
+#             c, _ = sess.run([cost, optimizer], feed_dict={X: batch_xs, Y: batch_ys})
+#             avg_cost += c / num_iterations
+#         print("Epoch: {:04d}, Cost: {:.9f}".format(epoch + 1, avg_cost))
+#
+#
+	# print("Accuracy: ",accuracy.eval(session=sess, feed_dict={X: mnist.test.images, Y: mnist.test.labels}))
+
+	# # Get one and predict
+	# r = random.randint(0, mnist.test.num_examples - 1)
+	# print("Label: ", sess.run(tf.argmax(mnist.test.labels[r : r + 1], 1)))
+	# print("Prediction: ", sess.run(tf.argmax(hypothesis, 1), feed_dict={X: mnist.test.images[r : r + 1]}))
+	# plt.imshow(mnist.test.images[r : r + 1].reshape(28, 28),cmap="Greys", interpolation="nearest")
+	# plt.show()
+
+
+

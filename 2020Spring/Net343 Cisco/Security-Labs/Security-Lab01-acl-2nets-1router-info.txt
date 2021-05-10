@@ -1,0 +1,45 @@
+Security-Lab01-acl-2nets-1router-i
+Security-Lab01-2nets-1router-info
+Security-Lab01-2nets-1router-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Security-Lab01-acl-2nets-1router-i to Security-Lab01-acl-2nets-1router-x-MyName
+
++ Verify that c10Corp can ping the webServerCorp and can view the web pages it is hosting.
+
++ Also, verify that c11Corp2 can ping the webServerCorp and can view the web pages it is hosting.
+
++ Block c11Corp2 (10.10.93.11/24) any access to the webServer using a Named ACL. Add suitable documentaiton to the ACL. Apply it at the appropriate interface. 
+ 
+rCorp#config t
+rCorp(config)#ip access-list extended Block_c11toServer
+rCorp(config-ext-nacl)#remark Block c11Corp2 access to WebServerCorp
+rCorp(config-ext-nacl)#deny ip host 10.10.93.11 host 10.10.90.2
+rCorp(config-ext-nacl)#permit ip any any
+rCorp(config-ext-nacl)#end
+rCorp#show run | begin ip access
+
+rCorp#config t
+rCorp(config)#int fa1/0
+rCorp(config-if)#ip access-group Block_c11toServer in
+rCorp(config-if)#end
+
++ View the ACLs on rCorp including the interfaces where these have been applied
+rCorp#show ip access-lists
+rCorp#show ip interface fa1/0
+rCorp#show interfaces fa1/0
+rCorp#show run | begin interface
+
++ Verify that c10Corp can still ping the webServerCorp and can view the 
+web pages it is hosting.
+
++ Verify that c11Corp2 can no longer ping the webServerCorp and 
+cannot view the web pages it is hosting. Also, verify that it can ping c10Corp.
+
++ Copy running config to startup config of rCorp
+
++ Save the sim adding your name to it, such as Security-Lab01-acl-2nets-1router-x--MyName
+----------------------------------
+
+

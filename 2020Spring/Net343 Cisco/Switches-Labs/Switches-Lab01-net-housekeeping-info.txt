@@ -1,0 +1,120 @@
+Switches-Lab01-net-housekeeping-i
+Switches-Lab01-net-housekeeping-info
+Switches-Lab01-net-housekeeping-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+First copy the Switches-Lab01-net-housekeeping-i to Switches-Lab01-net-housekeeping-x
+
++ Change name label of computers to c1Corp and  c2Corp; and switch to s1Corp
+
++ Connect FastEthernet cable between c2Corp and port 20 on s1Corp
+
++ View infomation about hostname of device, amount of memory, NVRAM, base Ethernet address, IOS filename, number of perts, config register setting, model and sofware version 
+Switch>show version
+
++ run the "show ip int brief" and "show vlan brief"
+
++ Change hostname of Switch to "s1Corp"
+Switch>en
+Switch#config t
+Switch(config)#hostname s1Corp
+Switch(config)#end
+
++ Setup all user exec mode passwords (console and vty lines) to: net
+; and require passwords to log in
+Switch(config)#line con 0
+Switch(config-line)#password net
+Switch(config-line)#login
+Switch(config-line)#logging synchronous
+Switch(config-line)#line vty 0 ?
+Switch(config-line)#line vty 0 15
+Switch(config-line)#password net
+Switch(config-line)#login
+Switch(config-line)#logging synchronous
+Switch(config-line)#end
+
++ Set privilege exec mode password to: 343
+Switch(config)#enable secret 343
+Switch(config)#service password-encryption
+Switch(config)#no ip domain lookup
+Switch(config)#do show run
+
++ Set up suitable message of the day
+Switch(config)#banner motd *Authorized access only. All activity over network is logged.*
+Switch(config)#end
+
++ Set clock on device
+Switch#clock set ?
+(follow the prompts to set the clock, date, month, year)
+
++ Add descriptions to swtich ports. May explicity set speed of interface.
+Switch(config)#int fa0/10
+Switch(config-if)#description s1Corp port10 to c1Corp
+Switch(config-if)#speed 100
+Switch(config-if)#int fa0/20
+Switch(config-if)#description s1Corp port20 to c2Corp
+Switch(config-if)#speed 100
+
++ Set management vlan interface IP to 10.10.90.3/24; Add suitable interface description; 
+(may set: "ip default gateway" to 10.10.90.1); bring up the interface
+Switch(config)#int vlan 1
+Switch(config-if)#ip address 10.10.90.1 255.255.255.0
+Switch(config-if)#no shut
+Switch(config-if)#description s1Corp management vlan IP 10.10.90.3
+Switch(config-if)#end
+Switch#show run
+Switch#show ip int brief
+Switch#show vlan
+
++ Setup IPs of c1Corp to 10.10.90.10/24 and c2Corp to 10.10.90.20/24, with 
+No default gateway (or may set to 10.10.90.1)
+Ping from computer c1Corp to c2Corp and back to verify connectivity
+
++ Ping the management vlan from either c1Corp or c2Corp
+
++ Run command "arp -a" on computer c1Corp and c2Corp and view results
+
++ Run command "show ip arp" on router s1Corp and view results
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your name to it, such as Switches-Lab01-net-switch-housekeeping-x--MyName
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
++ Add a server system and set its IP addres to 10.10.90.2/24, and enable the TFTP service
+(Click c1Corp -> Config tab -> Under Interface FastEthernet0) set IP and subnet mask
+(Click c1Corp -> Services tab -> Verify TFTP service is on)
+
++ Make a backup of the router rCorp's startup configuration from NVRAM to the TFTP server
+s1Corp#copy start tftp
+Address or name of remote host []? 10.10.90.2
+Destination filename [rCorp-confg]?
+(Press the [Enter] key to confirm. Note the name
+of the file copied to the TFTP server)
+
++ Restore the startup configuration file from the TFTP server to the s1Corp's NVRAM, and
+"reload" the router to use this config file
+rCorp#copy tftp start
+Address or name of remote host []? 10.10.90.2
+Source filename []? rCorp-confg
+Destination filename [startup-config]? 
+s1Corp#reload
+
++ Track down the name of the IOS file on the router rCorp
+s1Corp# show version
+(highlight just the name of the file by clicking and dragging mouse across the name ending in bin, then Right-click and select "Copy" from the drop down menu that appears)
+
++ Make a backup of the rCorp's IOS from the flash to the TFTP server.
+s1Corp#copy flash tftp
+Source filename []? c2600-i-mz.122-28.bin
+Address or name of remote host []? 10.10.90.2
+Destination filename [c2600-i-mz.122-28.bin]? 
+
++ Save the sim adding your our name to it, such as Switches-Lab04-tftp-backup-x--MyName
+
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+On the Switch:
+TFTP server (10.10.90.2/24) added to s1Corp 
+
+

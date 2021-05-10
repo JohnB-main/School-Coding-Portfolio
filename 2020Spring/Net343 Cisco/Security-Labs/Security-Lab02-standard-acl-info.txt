@@ -1,0 +1,41 @@
+Security-Lab02-standard-acl-i
+Security-Lab02-standard-acl-info
+Security-Lab02-standard-acl-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Security-Lab02-standard-acl-i to Security-Lab02-standard-acl-x-MyName
+
++ Note the IP addresses assigned to hosts c10Corp, c11Corp2, and c12Branch by the DHCP server running on rCorp.
+
++ Verify that c10Corp, c11Corp2, and c12Branch can ping the webServerCorp and can view the web pages it is hosting.
+
++ Block all computers on the Branch network access to the main Corp network. Access from Branch computer to the auxiliary corporate LAN is still permitted.  Add suitable documentation to the ACL. Apply it at the appropriate interface. 
+ 
+rCorp#config t
+rCorp(config)#access-list 1 remark Block Branch office comps access to main corp LAN
+rCorp(config)#access-list 1 deny 10.10.92.0 0.0.0.255
+rCorp(config)#access-list 1 permit any
+rCorp(config)#end
+rCorp#show run | begin access
+
+rCorp#config t
+rCorp(config)#int fa0/0
+rCorp(config-if)#ip access-group 1 out
+rCorp(config-if)#end
+
++ View the ACLs on rCorp including the interfaces where these have been applied. 
+rCorp#show access-lists
+rCorp#show ip interface fa0/0
+rCorp#show interface fa0/0
+
++ Verify that c10Corp and c11Corp2 can still ping the webServerCorp and can view the web pages it is hosting. These should also be able to ping c12Branch.
+
++ Verify that c12Branch can no longer ping the webServerCorp and cannot view the web pages it is hosting, or ping c10Corp. However, c12Branch should still be able to ping c11Corp2.
+
++ Copy running config to startup config of rCorp
+
++ Save the sim adding your name to it, such as Security-Lab02-standard-acl-x--MyName
+----------------------------------
+
+

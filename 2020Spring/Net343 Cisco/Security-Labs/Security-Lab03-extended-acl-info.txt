@@ -1,0 +1,41 @@
+Security-Lab03-extended-acl-i
+Security-Lab03-extended-acl-info
+Security-Lab03-extended-acl-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Security-Lab03-extended-acl-i to Security-Lab03-extended-acl-x-MyName
+
++ Note the IP addresses assigned to hosts c10Corp, c11Corp2, and c12Branch by the DHCP server running on rCorp.
+
++ Verify that c10Corp, c11Corp2, and c12Branch can ping the webServerCorp and can view the web pages it is hosting.
+
++ Block c12Branch computer access to http services only webServer. Other computers should be able to access the web server.  Add suitable documentation to the ACL. Apply it at the appropriate interface. 
+ 
+rBranch#config t
+rBranch(config)#access-list 101 remark Block only c12 Branch office computer access to HTTP services on webServerCorp
+rBranch(config)#access-list 101 deny tcp host 10.10.92.10 host 10.10.90.2 eq 80
+rBranch(config)#access-list 101 permit ip any any
+rBranch(config)#end
+rBranch#show run | begin access
+
+rBranch#config t
+rBranch(config)#int fa0/0
+rBranch(config-if)#ip access-group 101 in
+rBranch(config-if)#end
+
++ View the ACLs on rBranch including the interfaces where these have been applied. 
+rBranch#show access-lists
+rBranch#show ip interface fa0/0
+rBranch#show interface fa0/0
+
++ Verify that c10Corp and c11Corp2 can still ping the webServerCorp and can view the web pages it is hosting. These should also be able to ping c12Branch.
+
++ Verify that while c12Branch can ping the webServerCorp it cannot view web pages. c12Branch should be able ping c10Corp.
+
++ Copy running config to startup config of rBranch.
+
++ Save the sim adding your name to it, such as Security-Lab03-extended-acl-x--MyName
+----------------------------------
+
+

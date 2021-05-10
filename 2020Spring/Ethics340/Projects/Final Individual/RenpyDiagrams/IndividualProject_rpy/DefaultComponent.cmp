@@ -1,0 +1,130 @@
+I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
+{ IComponent 
+	- _id = GUID 65aa4e00-e22d-4db5-ba84-53dc6daca699;
+	- _myState = 139264;
+	- _name = "DefaultComponent";
+	- _objectCreation = "230199923202002171152";
+	- _umlDependencyID = "3080";
+	- m_buildType = Executable;
+	- m_libraries = "";
+	- m_additionalSources = "";
+	- m_standardHeaders = "";
+	- m_includePath = "";
+	- m_initializationCode = "";
+	- m_folder = { IFolder 
+		- _id = GUID d2830751-5fc7-4d6f-a7d3-90b3f63d4bce;
+		- _myState = 73728;
+		- _name = "Files";
+		- _objectCreation = "230201923202002170952";
+		- _umlDependencyID = "1914";
+		- m_path = "";
+		- Elements = { IRPYRawContainer 
+			- size = 0;
+		}
+		- Files = { IRPYRawContainer 
+			- size = 0;
+		}
+	}
+	- m_configActive = { ICodeGenConfigInfoHandle 
+		- _m2Class = "ICodeGenConfigInfo";
+		- _id = GUID f7d297fa-59e4-4d0b-b85e-be822cf27827;
+	}
+	- Configs = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ ICodeGenConfigInfo 
+			- _id = GUID f7d297fa-59e4-4d0b-b85e-be822cf27827;
+			- _myState = 8192;
+			- _name = "DefaultConfig";
+			- _objectCreation = "230203923202002170752";
+			- _umlDependencyID = "2722";
+			- HyperLinks = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IMHyperLink 
+					- _id = GUID 3c541c43-fe23-4fa3-ab43-495628a968e0;
+					- _objectCreation = "230205923202002170552";
+					- _umlDependencyID = "1415";
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Makefile";
+					- _linkType = "FREE";
+					- _linkTarget = "U:\\CSC 340 2020 Spring\\IndividualProject\\DefaultComponent\\DefaultConfig\\DefaultComponent.mak";
+					- isConfigurationFileHyperLink = 1;
+				}
+				{ IMHyperLink 
+					- _id = GUID 30b5c7f0-7993-48a3-93b4-381668c3f94f;
+					- _objectCreation = "230207923202002170352";
+					- _umlDependencyID = "1415";
+					- _dependsOn = { INObjectHandle 
+						- _m2Class = "";
+					}
+					- _linkDispName = "Edit Main File";
+					- _linkType = "FREE";
+					- _linkTarget = "U:\\CSC 340 2020 Spring\\IndividualProject\\DefaultComponent\\DefaultConfig\\MainDefaultComponent";
+					- isConfigurationFileHyperLink = 1;
+				}
+			}
+			- _scopeType = Explicit;
+			- _libraries = "";
+			- _additionalSources = "";
+			- _standardHeaders = "";
+			- _includePath = "";
+			- _targetMain = "";
+			- _instrumentation = None;
+			- _timeModel = RealTime;
+			- m_generateActors = 1;
+			- _statechartImplementation = Flat;
+			- _initializationCode = "";
+			- _checksList = 0 ;
+			- ScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- InitialInstances = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _root = { IFolder 
+				- _id = GUID 2c7e786f-6a8b-4c03-8254-b6f5538cd664;
+				- _myState = 8192;
+				- _name = "DefaultConfig";
+				- _objectCreation = "230209923202002170152";
+				- _umlDependencyID = "2722";
+				- m_path = "";
+				- Elements = { IRPYRawContainer 
+					- size = 0;
+				}
+				- Files = { IRPYRawContainer 
+					- size = 0;
+				}
+			}
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- AnimScopeElements = { IRPYRawContainer 
+				- size = 0;
+			}
+			- m_allInAnimScope = 1;
+		}
+	}
+	- HandlesInMe = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IHandle 
+			- _m2Class = "ISubsystem";
+			- _filename = "Default.sbs";
+			- _subsystem = "";
+			- _class = "";
+			- _name = "Default";
+			- _id = GUID cbb272ba-fa9f-4cfc-bbb2-c46961d83a7c;
+		}
+	}
+	- VariationPoints = { IRPYRawContainer 
+		- size = 0;
+	}
+	- SelectedVariants = { IRPYRawContainer 
+		- size = 0;
+	}
+	- weakCGTime = 2.10.2020::15:12:9;
+	- strongCGTime = 1.2.1990::0:0:0;
+}
+

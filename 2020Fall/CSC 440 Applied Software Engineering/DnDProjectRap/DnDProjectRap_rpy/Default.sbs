@@ -1,0 +1,767 @@
+I-Logix-RPY-Archive version 8.5.2 Modeler C++ 1159120
+{ ISubsystem 
+	- _id = GUID 914a99d1-95b2-401e-9f1e-f7eca48458d7;
+	- _myState = 8192;
+	- _name = "Default";
+	- _objectCreation = "495241658202023204794";
+	- _umlDependencyID = "2151";
+	- _lastID = 14;
+	- weakCGTime = 9.16.2020::6:56:19;
+	- strongCGTime = 8.29.2020::14:2:30;
+	- _defaultComposite = GUID 065f3b36-1b65-42e0-9115-efc50bdc101f;
+	- _eventsBaseID = -1;
+	- Classes = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IClass 
+			- _id = GUID 065f3b36-1b65-42e0-9115-efc50bdc101f;
+			- _myState = 40960;
+			- _name = "TopLevel";
+			- _objectCreation = "495261658202023204594";
+			- _umlDependencyID = "2253";
+			- weakCGTime = 8.29.2020::14:7:51;
+			- strongCGTime = 8.29.2020::14:2:30;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- UseCases = { IRPYRawContainer 
+		- size = 11;
+		- value = 
+		{ IUseCase 
+			- _id = GUID a53d2cf7-5b7d-4495-b1e5-9348de21a825;
+			- _myState = 8192;
+			- _name = "Edit Stats";
+			- _objectCreation = "495281658202023204394";
+			- _umlDependencyID = "2359";
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 2;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID ff61b246-50cd-4834-b616-8776aea726d2;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495301658202023204194";
+					- _umlDependencyID = "2184";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 1f176a7e-6f2f-45c7-91a9-ebc30e1a0fc5;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 3b7db878-cd8b-487f-bd1e-54390b8a80c0;
+					- _myState = 10240;
+					- _name = "itsUser_1";
+					- _objectCreation = "495321658202023203994";
+					- _umlDependencyID = "2337";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 3d44fa37-81c2-4369-8616-b5a70340acdd;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 64721fbf-aa1b-44fe-b13e-095fd0fc1177;
+			- _myState = 8192;
+			- _name = "Add item, skill, or trait";
+			- _objectCreation = "495341658202023203794";
+			- _umlDependencyID = "3542";
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID d98b2f49-38a9-4280-9572-654611766950;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495361658202023203594";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID d367dfe2-f10f-4ab3-ae47-0807e220097b;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 8d2cafcb-b759-4879-bd44-21ca1c7eb446;
+			- _myState = 8192;
+			- _name = "Delete item, skill, or trait";
+			- _objectCreation = "495381658202023203394";
+			- _umlDependencyID = "3872";
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID d8d4160f-d0b2-4fac-845f-2dd43c6a07d5;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495401658202023203194";
+					- _umlDependencyID = "2184";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID e019e70b-b92e-49bf-b1c5-41f703ea3e1d;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 41e85166-9338-4aa9-9b32-531927f5fdf7;
+			- _myState = 8192;
+			- _name = "Edit item skill, or trait";
+			- _objectCreation = "495421658202023202994";
+			- _umlDependencyID = "3623";
+			- weakCGTime = 1.2.1990::0:0:0;
+			- strongCGTime = 1.2.1990::0:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 429d1d11-a526-46be-ba78-a5500beca00d;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495441658202023202794";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 2f49b0eb-31b1-4d30-8087-715257a89a8e;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 582bb64f-4ea2-4484-8fd4-fa3b32757bcd;
+			- _myState = 8192;
+			- _name = "Add Character";
+			- _objectCreation = "495461658202023202594";
+			- _umlDependencyID = "2616";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 5726746b-558a-43fe-ba41-01ab051461e1;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495481658202023202394";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID e2900914-cae8-4012-a01c-da4dc43f2fbe;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID c00e6566-c033-4979-96ec-5cb61b576faf;
+			- _myState = 8192;
+			- _name = "Edit Character";
+			- _objectCreation = "495501658202023202194";
+			- _umlDependencyID = "2732";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 1f39c8be-78af-470d-974a-c7d6c0ed08a8;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495521658202023201994";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 7835370a-5d12-4b3e-85c0-75c6501eb4fa;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID e7ad4093-4ea3-4218-9e2d-af657c662bb3;
+			- _myState = 8192;
+			- _name = "Delete Character";
+			- _objectCreation = "495541658202023201794";
+			- _umlDependencyID = "2946";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 660a4f7a-a997-4bc8-8ca5-9e43e04b44c0;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495561658202023201594";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 89d14405-a072-4b5e-9dfe-2ad3992e0a95;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 028e739a-74ff-4635-bdb3-e5f7d1b1ccef;
+			- _myState = 8192;
+			- _name = "Add Item or Skill";
+			- _objectCreation = "495581658202023201394";
+			- _umlDependencyID = "2842";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID bb6f6293-a36a-49d9-a608-906c6a8e5b25;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495601658202023201194";
+					- _umlDependencyID = "2184";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID e96ffd18-12a1-4c87-b2f6-c38123111090;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID 233d2702-f53e-4c81-adb9-ae9f612e2eef;
+			- _myState = 8192;
+			- _name = "Edit Item or Skill";
+			- _objectCreation = "495621658202023200994";
+			- _umlDependencyID = "2967";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 26955e15-ef1c-437a-8b0a-6e6ad9c54c97;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495641658202023200794";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID b1abdbf3-8881-47d2-9f8e-0ed5edd4424f;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID c4fa4179-7ff2-47b0-9cfb-711eff6f31b5;
+			- _myState = 8192;
+			- _name = "Delete Item or Skill";
+			- _objectCreation = "495661658202023200594";
+			- _umlDependencyID = "3172";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 5d8e6744-dd6e-4c61-887b-f68ff8e55e57;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495681658202023200394";
+					- _umlDependencyID = "2193";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 009aa008-7a2a-4be7-9f01-8fbb1d9db64f;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+		{ IUseCase 
+			- _id = GUID a20b539a-4616-48ee-bccf-3958279a5a23;
+			- _myState = 8192;
+			- _name = "Roll Dice";
+			- _objectCreation = "495701658202023200194";
+			- _umlDependencyID = "2215";
+			- weakCGTime = 12.31.1969::19:0:0;
+			- strongCGTime = 12.31.1969::19:0:0;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 1;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID cc36d21c-261a-4739-b9ae-adb91be13474;
+					- _myState = 10240;
+					- _name = "itsUser";
+					- _objectCreation = "495721658202023199994";
+					- _umlDependencyID = "2211";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IActor";
+						- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID eecdca31-1aa2-45cb-8082-27fc0d5585af;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+			- UseCaseStereoTypes = { IRPYRawContainer 
+				- size = 0;
+			}
+			- _EntryPoints = { IRPYRawContainer 
+				- size = 0;
+			}
+		}
+	}
+	- Actors = { IRPYRawContainer 
+		- size = 1;
+		- value = 
+		{ IActor 
+			- _id = GUID f4bd6caa-a3c9-4d6f-8ce7-7205984e98a3;
+			- _myState = 8192;
+			- _name = "User";
+			- _objectCreation = "495741658202023199794";
+			- _umlDependencyID = "1875";
+			- weakCGTime = 9.16.2020::6:57:19;
+			- strongCGTime = 8.29.2020::14:4:58;
+			- _multiplicity = "";
+			- _itsStateChart = { IHandle 
+				- _m2Class = "";
+			}
+			- Associations = { IRPYRawContainer 
+				- size = 12;
+				- value = 
+				{ IAssociationEnd 
+					- _id = GUID 1f176a7e-6f2f-45c7-91a9-ebc30e1a0fc5;
+					- _myState = 10240;
+					- _name = "itsEdit Stats";
+					- _objectCreation = "495761658202023199594";
+					- _umlDependencyID = "2713";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID a53d2cf7-5b7d-4495-b1e5-9348de21a825;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID ff61b246-50cd-4834-b616-8776aea726d2;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID d367dfe2-f10f-4ab3-ae47-0807e220097b;
+					- _myState = 10240;
+					- _name = "itsAdd item, skill, or trait";
+					- _objectCreation = "495781658202023199394";
+					- _umlDependencyID = "3896";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 64721fbf-aa1b-44fe-b13e-095fd0fc1177;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID d98b2f49-38a9-4280-9572-654611766950;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID e019e70b-b92e-49bf-b1c5-41f703ea3e1d;
+					- _myState = 10240;
+					- _name = "itsDelete item, skill, or trait";
+					- _objectCreation = "495801658202023199194";
+					- _umlDependencyID = "4217";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 8d2cafcb-b759-4879-bd44-21ca1c7eb446;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID d8d4160f-d0b2-4fac-845f-2dd43c6a07d5;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 2f49b0eb-31b1-4d30-8087-715257a89a8e;
+					- _myState = 10240;
+					- _name = "itsEdit item skill, or trait";
+					- _objectCreation = "495821658202023198994";
+					- _umlDependencyID = "3977";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 41e85166-9338-4aa9-9b32-531927f5fdf7;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 429d1d11-a526-46be-ba78-a5500beca00d;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 3d44fa37-81c2-4369-8616-b5a70340acdd;
+					- _myState = 10240;
+					- _name = "itsEdit Stats_1";
+					- _objectCreation = "495841658202023198794";
+					- _umlDependencyID = "2857";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID a53d2cf7-5b7d-4495-b1e5-9348de21a825;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 3b7db878-cd8b-487f-bd1e-54390b8a80c0;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID e2900914-cae8-4012-a01c-da4dc43f2fbe;
+					- _myState = 10240;
+					- _name = "itsAdd Character";
+					- _objectCreation = "495861658202023198594";
+					- _umlDependencyID = "2970";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 582bb64f-4ea2-4484-8fd4-fa3b32757bcd;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 5726746b-558a-43fe-ba41-01ab051461e1;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 7835370a-5d12-4b3e-85c0-75c6501eb4fa;
+					- _myState = 10240;
+					- _name = "itsEdit Character";
+					- _objectCreation = "495881658202023198394";
+					- _umlDependencyID = "3095";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID c00e6566-c033-4979-96ec-5cb61b576faf;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 1f39c8be-78af-470d-974a-c7d6c0ed08a8;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 89d14405-a072-4b5e-9dfe-2ad3992e0a95;
+					- _myState = 10240;
+					- _name = "itsDelete Character";
+					- _objectCreation = "495901658202023198194";
+					- _umlDependencyID = "3291";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID e7ad4093-4ea3-4218-9e2d-af657c662bb3;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 660a4f7a-a997-4bc8-8ca5-9e43e04b44c0;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID e96ffd18-12a1-4c87-b2f6-c38123111090;
+					- _myState = 10240;
+					- _name = "itsAdd Item or Skill";
+					- _objectCreation = "495921658202023197994";
+					- _umlDependencyID = "3196";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 028e739a-74ff-4635-bdb3-e5f7d1b1ccef;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID bb6f6293-a36a-49d9-a608-906c6a8e5b25;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID b1abdbf3-8881-47d2-9f8e-0ed5edd4424f;
+					- _myState = 10240;
+					- _name = "itsEdit Item or Skill";
+					- _objectCreation = "495941658202023197794";
+					- _umlDependencyID = "3321";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID 233d2702-f53e-4c81-adb9-ae9f612e2eef;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 26955e15-ef1c-437a-8b0a-6e6ad9c54c97;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID 009aa008-7a2a-4be7-9f01-8fbb1d9db64f;
+					- _myState = 10240;
+					- _name = "itsDelete Item or Skill";
+					- _objectCreation = "495961658202023197594";
+					- _umlDependencyID = "3526";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID c4fa4179-7ff2-47b0-9cfb-711eff6f31b5;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID 5d8e6744-dd6e-4c61-887b-f68ff8e55e57;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+				{ IAssociationEnd 
+					- _id = GUID eecdca31-1aa2-45cb-8082-27fc0d5585af;
+					- _myState = 10240;
+					- _name = "itsRoll Dice";
+					- _objectCreation = "495981658202023197394";
+					- _umlDependencyID = "2578";
+					- _multiplicity = "1";
+					- _otherClass = { IClassifierHandle 
+						- _m2Class = "IUseCase";
+						- _id = GUID a20b539a-4616-48ee-bccf-3958279a5a23;
+					}
+					- _inverse = { IHandle 
+						- _m2Class = "IAssociationEnd";
+						- _id = GUID cc36d21c-261a-4739-b9ae-adb91be13474;
+					}
+					- _linkName = "";
+					- _linkType = Assoc;
+					- _navigability = Navigable;
+				}
+			}
+			- _classModifier = Unspecified;
+		}
+	}
+	- _configurationRelatedTime = 1.2.1990::0:0:0;
+}
+

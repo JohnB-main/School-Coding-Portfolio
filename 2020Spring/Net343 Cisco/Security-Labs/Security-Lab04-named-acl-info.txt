@@ -1,0 +1,43 @@
+Security-Lab04-named-acl-i
+Security-Lab04-named-acl-info
+Security-Lab04-named-acl-x
+----------------------------------
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+First copy the Security-Lab04-named-acl-i to Security-Lab04-named-acl-x-MyName
+
++ Note the IP addresses assigned to hosts c10Corp, c11Corp2, and c12Branch by the DHCP server running on rCorp.
+
++ Verify that c10Corp, c11Corp2, and c12Branch can ping the webServerCorp and can view the web pages it is hosting.
+
++ Allow only main corporate LAN computers to access branch computers. Computers on 10.10.93.0/24 should not be able to access these. Add suitable documentation to the ACL. Apply it at the appropriate interface. 
+ 
+rBranch#config t
+rBranch(config)#ip access-list standard Allow_MainCorpToBranch 
+rBranch(config-std-nacl)#remark Allow only main Corp systems access to Branch computers
+rBranch(config-std-nacl)#permit 10.10.90.0 0.0.0.255
+rBranch(config-std-nacl)#deny 10.10.93.0 0.0.0.255
+rBranch(config-std-nacl)#permit any
+rBranch(config-std-nacl)#end
+rBranch#show run | begin access
+
+rBranch#config t
+rBranch(config)#int fa0/0
+rBranch(config-if)#ip access-group Allow_MainCorpToBranch out
+rBranch(config-if)#end
+
++ View the ACLs on rBranch including the interfaces where these have been applied. 
+rCorp#show access-lists
+rCorp#show ip interface fa0/0
+rCorp#show interface fa0/0
+
++ Verify that only the main corporate LAN computers can access branch computers (such as c12Branch). Computers on 10.10.93.0/24 should not be able to access c12Branch.
+
++ Verify that c12Branch can ping the webServerCorp and view web pages. c12Branch should be able ping c10Corp, but time out when pinging c11Corp2.
+
++ Copy running config to startup config of rBranch.
+
++ Save the sim adding your name to it, such as Security-Lab04-named-acl-x--MyName
+----------------------------------
+
+

@@ -1,0 +1,44 @@
+IOS-Lab05-switch-cdp-i
+IOS-Lab05-switch-cdp-info
+IOS-Lab05-switch-cdp-x
+----------------------------------
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface 10.10.90.1/24 and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required and passwor is: net
+User exec mode password: net
+Privilege exec mode password: 343
+MOTD and Login banners set
+ip hostname rC 10.10.90.1
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+Management vlan 1 10.10.90.3/24 added
+----------------------------------
+IMPLEMENTED: Sim Activities for eXtending the initial configurations
+
++ Run the "show cdp" command from the privilege exec mode to determine whether cdp is enabled
+s1Corp#show cdp
+
++ Obtain information about neighboring devices connected to a network
+ switch or router using the "show cdp neightbors" command
+s1Corp#show cdp neighbors
+
++ Obtain IP information of neighboring devices connected to a network
+ switch or router using the 
+"show cdp neightbors detail" or the 
+"show cdp entry *" commands
+s1Corp#show cdp neighbors detail
+
++ Save the sim adding your our name to it, such as IOS-Lab05-switch-cdp-info-x--MyName
+----------------------------------
+UPDATED CONFIGURATIONS ADDED
+None
+
+

@@ -1,0 +1,64 @@
+IOS-Lab01-hostnames-IPs-i
+IOS-Lab01-hostnames-IPs-info
+IOS-Lab01-hostnames-IPs-x
+
+INITIAL CONFIGURATIONS:
+On the Router:
+running-config and startup-config identical 
+Router name - rCorp
+IPs set on Fa0/0 interface   and it is up
+16 vty (telnet/ssh) lines 0 - 15 available, login required but no password is set
+
+On the Switch:
+running-config and startup-config identical 
+Switch name - s1Corp
+All 24 FastEthernet, and 2 Gig interfaces enabled
+Management native default vlan 1 (all ports belong to it) shutdown
+16 vty (telnet/ssh) lines 0-15 available, login required but no password set
+
+----------------------------------
+Sim Activities for eXtending the initial configurations:
+
++ Change name label of computer to c1Corp; 
+switch to s1Corp and router to rCorp
+(Click c1Corp -> Config tab -> Under Interface FastEthernet0) set IP and subnet mask
+
++ Change hostname of Router to "rCorp"; 
+Set IP of rCorp's FastEthernet0/0 to 10.10.90.1/24;
+provide suitable description of interface;
+bring up the interface
+(Click router and access the CLI tab)
+Router>en
+Router#config t
+Router(config)# hostname rCorp
+rCorp(config)#int fa0/0
+rCorp(config-if)#ip address 10.10.90.1 255.255.255.0
+rCorp(config-if)#no shut
+rCorp(config-if)#description To corp LAN switch s1Corp
+rCorp(config-if)#end
+rCorp# 
+
++ Change hostname of Switch to "s1Corp"
+(Click switch and access the CLI tab)
+Switch>en
+Switch#config t
+Switch(config)#hostname s1Corp
+s1Corp(config)#end
+s1Corp#
+
++ Set IP of computer c1Corp's FastEthernet to 10.10.90.10/24
+(Click c1Corp -> Config tab -> Under Interface FastEthernet0) set IP and subnet mask
+
++ ping from computer c1Corp to router rCorp and back to verify connectivity
+(Click c1Corp -> Dekstop -> Command Prompt) and run the ping 10.10.90.1 command; and on router the ping command may be run in either user exec mode or privilege exec mode
+rCorp>ping 10.10.90.10
+
++ Run command "arp -a" on computer c1Core and view results
+
++ Run command "show ip arp" on router rCorp and view results
+
++ Copy running configs to startup configs of devices
+rCorp#copy run start
+s1Corp#copy run start
+
++ Save the sim adding your name to it, such as IOS-Lab01-hostnames-IPs-x--MyName

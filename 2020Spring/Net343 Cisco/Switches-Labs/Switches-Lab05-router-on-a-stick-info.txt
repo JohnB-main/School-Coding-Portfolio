@@ -1,0 +1,43 @@
+Switches-Lab05-router-on-a-stick-i
+Switches-Lab05-router-on-a-stick-info
+Switches-Lab05-router-on-a-stick-x
+----------------------------------
+TO-DO: Sim Activities for eXtending the initial configurations
+
++ Verify that pings of computer on same vlan can ping computers  across multiple switches
+
++ Connect port of s1Corp to a router, and designate this as a trunk port
+s1Corp(config)#int fa0/1
+s1Corp(config-if)#switchport mode trunk
+s1Corp(config-if)#end
+
++ Set the Fa0/0 port of router to 10.10.90.1/24 and bring up the interface
+Router>en
+Router#config t
+Router(config)#int fa0/0
+Router(config-if)#ip address 10.10.90.1 255.255.255.0
+Router(config-if)#no shut
+
++ Set up subinterfaces on the Fa0/0 port of the router for vlan 100 as 10.10.91.1/24; and 
+vlan 200 as 10.10.92.1/24
+(use IEEE 802.1q encapsulation)
+Router(config-subif)#int fa0/0.100
+Router(config-subif)#encapsulation dot1q 100
+Router(config-subif)#ip address 10.10.91.1 255.255.255.0
+Router(config-if)#int fa0/0.200
+Router(config-subif)#encapsulation dot1q 200
+Router(config-subif)#ip address 10.10.92.1 255.255.255.0
+Router(config-subif)#end
+
++ Run the "show ip int brief" command on the router and verify interfaces are "up and up"
+
++ Verify computers can ping each other across various lans 
+(after setting up default gateways on each computer)
+
++ Copy running configs to startup configs of devices
+
++ Save the sim adding your name to it, such as Switches-Lab01-vlans-x--MyName
+----------------------------------
+
+
+
